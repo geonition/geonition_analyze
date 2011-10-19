@@ -1,0 +1,1779 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="generator"
+    content="HTML Tidy for Mac OS X (vers 1st September 2002), see www.w3.org" />
+    <title>Basic Shapes - SVG 1.1 - 20030114</title>
+    <link rel="stylesheet" type="text/css" media="screen"
+    href="style/svg-style.css" />
+    <link rel="stylesheet" type="text/css" media="screen"
+    href="http://www.w3.org/StyleSheets/TR/W3C-REC" />
+    <link rel="prev" href="paths.html" />
+    <link rel="next" href="text.html" />
+    <link rel="contents" href="index.html#minitoc" />
+    <link rel="element" href="eltindex.html" title="elements" />
+    <link rel="attributes" href="attindex.html"
+    title="attributes" />
+    <link rel="CSS-properties" href="propidx.html"
+    title="properties" />
+    <link rel="index" href="indexlist.html" title="index" />
+  </head>
+  <body>
+    <div class="navlinks">
+      <p><a href="paths.html">previous</a> &nbsp; <a
+      href="text.html">next</a> &nbsp; <a
+      href="index.html#minitoc">contents</a> &nbsp; <a
+      href="eltindex.html">elements</a> &nbsp; <a
+      href="attindex.html">attributes</a> &nbsp; <a
+      href="propidx.html">properties</a> &nbsp; <a
+      href="indexlist.html">index</a> &nbsp;</p>
+    </div>
+    <hr class="navbar" />
+    <div class='noprint' style='text-align: right'>
+      <p style='font-family: monospace;font-size:small'>14 January
+      2003</p>
+    </div>
+    <h1>9 Basic Shapes</h1>
+    <br />
+     <a id="Contents" name="Contents"></a> 
+    <h3>Contents</h3>
+    <ul class="toc">
+      <li class="tocline2"><a href="shapes.html#Introduction"
+      class="tocxref">9.1 Introduction</a></li>
+      <li class="tocline2"><a href="shapes.html#RectElement"
+      class="tocxref">9.2 The <span
+      class="element-name">'rect'</span> element</a></li>
+      <li class="tocline2"><a href="shapes.html#CircleElement"
+      class="tocxref">9.3 The <span
+      class="element-name">'circle'</span> element</a></li>
+      <li class="tocline2"><a href="shapes.html#EllipseElement"
+      class="tocxref">9.4 The <span
+      class="element-name">'ellipse'</span> element</a></li>
+      <li class="tocline2"><a href="shapes.html#LineElement"
+      class="tocxref">9.5 The <span
+      class="element-name">'line'</span> element</a></li>
+      <li class="tocline2"><a href="shapes.html#PolylineElement"
+      class="tocxref">9.6 The <span
+      class="element-name">'polyline'</span> element</a></li>
+      <li class="tocline2"><a href="shapes.html#PolygonElement"
+      class="tocxref">9.7 The <span
+      class="element-name">'polygon'</span> element</a></li>
+      <li class="tocline2"><a href="shapes.html#PointsBNF"
+      class="tocxref">9.8 The grammar for points specifications in
+      <span class="element-name">'polyline'</span> and <span
+      class="element-name">'polygon'</span> elements</a></li>
+      <li class="tocline2"><a href="shapes.html#shape-mod"
+      class="tocxref">9.9 Shape Module</a></li>
+      <li class="tocline2"><a href="shapes.html#DOMInterfaces"
+      class="tocxref">9.10 DOM interfaces</a></li>
+    </ul>
+    <br />
+     &nbsp; <a id="Introduction" name="Introduction"></a> 
+    <h2>9.1 Introduction</h2>
+    <p>SVG contains the following set of basic shape elements:</p>
+    <ul>
+      <li><a href="shapes.html#RectElement"><span
+      class="element-name">rectangles</span></a> (rectangle,
+      including optional rounded corners)</li>
+      <li><a href="shapes.html#CircleElement"><span
+      class="element-name">circles</span></a></li>
+      <li><a href="shapes.html#EllipseElement"><span
+      class="element-name">ellipses</span></a></li>
+      <li><a href="shapes.html#LineElement"><span
+      class="element-name">lines</span></a></li>
+      <li><a href="shapes.html#PolylineElement"><span
+      class="element-name">polylines</span></a></li>
+      <li><a href="shapes.html#PolygonElement"><span
+      class="element-name">polygons</span></a></li>
+    </ul>
+    <p>Mathematically, these shape elements are equivalent to a <a
+    href="paths.html#PathElement"><span
+    class="element-name">'path'</span></a> element that would
+    construct the same shape. The basic shapes may be stroked,
+    filled and used as clip paths. All of the properties available
+    for <a href="paths.html#PathElement"><span
+    class="element-name">'path'</span></a> elements also apply to
+    the basic shapes.</p>
+    <a id="RectElement" name="RectElement"
+    class="indexref-rect#Q#_element"></a> 
+    <h2>9.2 The <span class="element-name">'rect'</span>
+    element</h2>
+    <p>The <span class="element-name">'rect'</span> element defines
+    a rectangle which is axis-aligned with the current <a
+    href="intro.html#TermUserCoordinateSystem">user coordinate
+    system</a>. Rounded rectangles can be achieved by setting
+    appropriate values for attributes <a
+    href="shapes.html#RectElementRXAttribute"><span
+    class="attr-name">rx</span></a> and <a
+    href="shapes.html#RectElementRYAttribute"><span
+    class="attr-name">ry</span></a>.</p>
+    <table summary="rect element" class="dtd-fragment">
+      <tr>
+        <td>
+<pre class="dtd-fragment">
+&lt;!ENTITY % SVG.rect.extra.content "" &gt;
+&lt;!ENTITY % SVG.rect.element "INCLUDE" &gt;
+&lt;![%SVG.rect.element;[
+&lt;!ENTITY % SVG.rect.content
+    "(( %<a
+href="struct.html#id5181053">SVG.Description.class</a>; )*, ( %<a
+href="animate.html#id5199568">SVG.Animation.class</a>;
+        %SVG.rect.extra.content; )*)"
+&gt;
+&lt;!ELEMENT %<a
+href="shapes.html#RectElement">SVG.rect.qname</a>; %SVG.rect.content; &gt;
+&lt;!-- end of SVG.rect.element --&gt;]]&gt;
+&lt;!ENTITY % SVG.rect.attlist "INCLUDE" &gt;
+&lt;![%SVG.rect.attlist;[
+&lt;!ATTLIST %<a href="shapes.html#RectElement">SVG.rect.qname</a>;
+    %<a href="struct.html#core-att-mod">SVG.Core.attrib</a>;
+    %<a href="struct.html#id5190560">SVG.Conditional.attrib</a>;
+    %<a href="styling.html#id5189379">SVG.Style.attrib</a>;
+    %<a href="painting.html#paint-att-mod">SVG.Paint.attrib</a>;
+    %<a href="painting.html#paint-att-mod">SVG.Color.attrib</a>;
+    %<a
+href="painting.html#opacity-att-mod">SVG.Opacity.attrib</a>;
+    %<a
+href="painting.html#graphics-att-mod">SVG.Graphics.attrib</a>;
+    %<a href="masking.html">SVG.Clip.attrib</a>;
+    %<a href="masking.html">SVG.Mask.attrib</a>;
+    %<a href="filters.html#id5198232">SVG.Filter.attrib</a>;
+    %<a
+href="interact.html#graphical-events-att-mod">SVG.GraphicalEvents.attrib</a>;
+    %<a href="interact.html#id5196850">SVG.Cursor.attrib</a>;
+    %<a href="linking.html#err-att-mod">SVG.External.attrib</a>;
+    x %<a
+href="types.html#DataTypeCoordinate">Coordinate.datatype</a>; #IMPLIED
+    y %<a
+href="types.html#DataTypeCoordinate">Coordinate.datatype</a>; #IMPLIED
+    width %<a
+href="types.html#DataTypeLength">Length.datatype</a>; #REQUIRED
+    height %<a
+href="types.html#DataTypeLength">Length.datatype</a>; #REQUIRED
+    rx %<a
+href="types.html#DataTypeLength">Length.datatype</a>; #IMPLIED
+    ry %<a
+href="types.html#DataTypeLength">Length.datatype</a>; #IMPLIED
+    transform %<a
+href="types.html#DataTypeTransformList">TransformList.datatype</a>; #IMPLIED
+&gt;
+</pre>
+        </td>
+      </tr>
+    </table>
+    <div class="adef-list">
+      <p><em>Attribute definitions:</em></p>
+      <dl>
+        <dt><a id="RectElementXAttribute"
+        name="RectElementXAttribute"></a> <span
+        class="adef">x</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeCoordinate">&lt;coordinate&gt;</a></span>"</dt>
+        <dd>The x-axis coordinate of the side of the rectangle
+        which has the smaller x-axis coordinate value in the
+        current user coordinate system.<br />
+         If the attribute is not specified, the effect is as if a
+        value of "0" were specified.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+        <dt><a id="RectElementYAttribute"
+        name="RectElementYAttribute"></a> <span
+        class="adef">y</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeCoordinate">&lt;coordinate&gt;</a></span>"</dt>
+        <dd>The y-axis coordinate of the side of the rectangle
+        which has the smaller y-axis coordinate value in the
+        current user coordinate system.<br />
+         If the attribute is not specified, the effect is as if a
+        value of "0" were specified.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+        <dt><a id="RectElementWidthAttribute"
+        name="RectElementWidthAttribute"></a> <span
+        class="adef">width</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeLength">&lt;length&gt;</a></span>"</dt>
+        <dd>The width of the rectangle.<br />
+         A negative value is an error (see <a
+        href="implnote.html#ErrorProcessing">Error processing</a>).
+        A value of zero disables rendering of the element.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+        <dt><a id="RectElementHeightAttribute"
+        name="RectElementHeightAttribute"></a> <span
+        class="adef">height</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeLength">&lt;length&gt;</a></span>"</dt>
+        <dd>The height of the rectangle.<br />
+         A negative value is an error (see <a
+        href="implnote.html#ErrorProcessing">Error processing</a>).
+        A value of zero disables rendering of the element.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+        <dt><a id="RectElementRXAttribute"
+        name="RectElementRXAttribute"></a> <span
+        class="adef">rx</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeLength">&lt;length&gt;</a></span>"</dt>
+        <dd>For rounded rectangles, the x-axis radius of the
+        ellipse used to round off the corners of the
+        rectangle.<br />
+         A negative value is an error (see <a
+        href="implnote.html#ErrorProcessing">Error
+        processing</a>).<br />
+         See the notes below about what happens if the attribute is
+        not specified.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+        <dt><a id="RectElementRYAttribute"
+        name="RectElementRYAttribute"></a> <span
+        class="adef">ry</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeLength">&lt;length&gt;</a></span>"</dt>
+        <dd>For rounded rectangles, the y-axis radius of the
+        ellipse used to round off the corners of the
+        rectangle.<br />
+         A negative value is an error (see <a
+        href="implnote.html#ErrorProcessing">Error
+        processing</a>).<br />
+         See the notes below about what happens if the attribute is
+        not specified.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+      </dl>
+    </div>
+    <p>If a properly specified value is provided for <a
+    href="shapes.html#RectElementRXAttribute"><span
+    class="attr-name">rx</span></a> but not for <a
+    href="shapes.html#RectElementRYAttribute"><span
+    class="attr-name">ry</span></a>, then the user agent processes
+    the <a href="shapes.html#RectElement"><span
+    class="element-name">'rect'</span></a> element with the
+    effective value for <a
+    href="shapes.html#RectElementRYAttribute"><span
+    class="attr-name">ry</span></a> as equal to <a
+    href="shapes.html#RectElementRXAttribute"><span
+    class="attr-name">rx</span></a>. If a properly specified value
+    is provided for <a
+    href="shapes.html#RectElementRYAttribute"><span
+    class="attr-name">ry</span></a> but not for <a
+    href="shapes.html#RectElementRXAttribute"><span
+    class="attr-name">rx</span></a>, then the user agent processes
+    the <a href="shapes.html#RectElement"><span
+    class="element-name">'rect'</span></a> element with the
+    effective value for <a
+    href="shapes.html#RectElementRXAttribute"><span
+    class="attr-name">rx</span></a> as equal to <a
+    href="shapes.html#RectElementRYAttribute"><span
+    class="attr-name">ry</span></a>. If neither <a
+    href="shapes.html#RectElementRXAttribute"><span
+    class="attr-name">rx</span></a> nor <a
+    href="shapes.html#RectElementRYAttribute"><span
+    class="attr-name">ry</span></a> has a properly specified value,
+    then the user agent processes the <a
+    href="shapes.html#RectElement"><span
+    class="element-name">'rect'</span></a> element as if no
+    rounding had been specified, resulting in square corners. If <a
+    href="shapes.html#RectElementRXAttribute"><span
+    class="attr-name">rx</span></a> is greater than half of the
+    width of the rectangle, then the user agent processes the <a
+    href="shapes.html#RectElement"><span
+    class="element-name">'rect'</span></a> element with the
+    effective value for <a
+    href="shapes.html#RectElementRXAttribute"><span
+    class="attr-name">rx</span></a> as half of the width of the
+    rectangle. If <a
+    href="shapes.html#RectElementRYAttribute"><span
+    class="attr-name">ry</span></a> is greater than half of the
+    height of the rectangle, then the user agent processes the <a
+    href="shapes.html#RectElement"><span
+    class="element-name">'rect'</span></a> element with the
+    effective value for <a
+    href="shapes.html#RectElementRYAttribute"><span
+    class="attr-name">ry</span></a> as half of the height of the
+    rectangle.</p>
+    <p>Mathematically, a <a href="shapes.html#RectElement"><span
+    class="element-name">'rect'</span></a> element can be mapped to
+    an equivalent <a href="paths.html#PathElement"><span
+    class="element-name">'path'</span></a> element as follows:
+    (Note: all coordinate and length values are first converted
+    into user space coordinates according to <a
+    href="coords.html#Units">Units</a>.)</p>
+    <ul>
+      <li>perform an absolute <a
+      href="paths.html#PathDataMovetoCommands">moveto</a> operation
+      to location (<em>x+rx</em>,<em>y</em>), where <em>x</em> is
+      the value of the <a href="shapes.html#RectElement"><span
+      class="element-name">'rect'</span></a> element's <a
+      href="shapes.html#RectElementXAttribute"><span
+      class="attr-name">x</span></a> attribute converted to user
+      space, <em>rx</em> is the effective value of the <a
+      href="shapes.html#RectElementRXAttribute"><span
+      class="attr-name">rx</span></a> attribute converted to user
+      space and <em>y</em> is the value of the <a
+      href="shapes.html#RectElementYAttribute"><span
+      class="attr-name">y</span></a> attribute converted to user
+      space</li>
+      <li>perform an absolute horizontal <a
+      href="paths.html#PathDataLinetoCommands">lineto</a> operation
+      to location (<em>x+width-rx</em>,<em>y</em>), where
+      <em>width</em> is the <a href="shapes.html#RectElement"><span
+      class="element-name">'rect'</span></a> element's <a
+      href="shapes.html#RectElementWidthAttribute"><span
+      class="attr-name">width</span></a> attribute converted to
+      user space</li>
+      <li>perform an absolute <a
+      href="paths.html#PathDataEllipticalArcCommands">elliptical
+      arc</a> operation to coordinate
+      (<em>x+width</em>,<em>y+ry</em>), where the effective values
+      for the <a href="shapes.html#RectElementRXAttribute"><span
+      class="attr-name">rx</span></a> and <a
+      href="shapes.html#RectElementRYAttribute"><span
+      class="attr-name">ry</span></a> attributes on the <a
+      href="shapes.html#RectElement"><span
+      class="element-name">'rect'</span></a> element converted to
+      user space are used as the <em>rx</em> and <em>ry</em>
+      attributes on the <a
+      href="paths.html#PathDataEllipticalArcCommands">elliptical
+      arc</a> command, respectively, the <em>x-axis-rotation</em>
+      is set to zero, the <em>large-arc-flag</em> is set to zero,
+      and the <em>sweep-flag</em> is set to one</li>
+      <li>perform a absolute vertical <em>lineto</em> to location
+      (<em>x+width</em>,<em>y+height-ry</em>), where
+      <em>height</em> is the <a
+      href="shapes.html#RectElement"><span
+      class="element-name">'rect'</span></a> element's <a
+      href="shapes.html#RectElementHeightAttribute"><span
+      class="attr-name">height</span></a> attribute converted to
+      user space</li>
+      <li>perform an absolute <a
+      href="paths.html#PathDataEllipticalArcCommands">elliptical
+      arc</a> operation to coordinate
+      (<em>x+width-rx</em>,<em>y+height</em>)</li>
+      <li>perform an absolute horizontal <em>lineto</em> to
+      location (<em>x+rx</em>,<em>y+height</em>)</li>
+      <li>perform an absolute <a
+      href="paths.html#PathDataEllipticalArcCommands">elliptical
+      arc</a> operation to coordinate
+      (<em>x</em>,<em>y+height-ry</em>)</li>
+      <li>perform an absolute absolute vertical <em>lineto</em> to
+      location (<em>x</em>,<em>y+ry</em>)</li>
+      <li>perform an absolute <a
+      href="paths.html#PathDataEllipticalArcCommands">elliptical
+      arc</a> operation to coordinate
+      (<em>x+rx</em>,<em>y</em>)</li>
+    </ul>
+    <a id="ExampleRect01" name="ExampleRect01"></a> 
+    <p><span class="example-ref">Example rect01</span> shows a
+    rectangle with sharp corners. The <span
+    class="element-name">'rect'</span> element is filled with
+    yellow and stroked with navy.</p>
+<pre>
+&lt;?xml version="1.0" standalone="no"?&gt;
+&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;
+&lt;svg width="12cm" height="4cm" viewBox="0 0 1200 400"
+     xmlns="<a
+href="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</a>" version="1.1"&gt;
+  &lt;desc&gt;Example rect01 - rectangle with sharp corners&lt;/desc&gt;
+  &lt;!-- Show outline of canvas using 'rect' element --&gt;
+  &lt;rect x="1" y="1" width="1198" height="398"
+        fill="none" stroke="blue" stroke-width="2"/&gt;
+  &lt;rect x="400" y="100" width="400" height="200"
+        fill="yellow" stroke="navy" stroke-width="10"  /&gt;
+&lt;/svg&gt;
+</pre>
+    <table summary="Example rect01">
+      <caption align="bottom">
+        Example rect01
+      </caption>
+      <tr>
+        <td><img
+        alt="Example rect01 - rectangle with sharp corners"
+        src="images/shapes/rect01.png" width="426"
+        height="142" /></td>
+      </tr>
+    </table>
+    <p class="view-as-svg"><a href="images/shapes/rect01.svg">View
+    this example as SVG (SVG-enabled browsers only)</a><br />
+     &nbsp;</p>
+    <a id="ExampleRect02" name="ExampleRect02"></a> 
+    <p><span class="example-ref">Example rect02</span> shows two
+    rounded rectangles. The <a
+    href="shapes.html#RectElementRXAttribute"><span
+    class="attr-name">rx</span></a> specifies how to round the
+    corners of the rectangles. Note that since no value has been
+    specified for the <a
+    href="shapes.html#RectElementRYAttribute"><span
+    class="attr-name">ry</span></a> attribute, it will be assigned
+    the same value as the <a
+    href="shapes.html#RectElementRXAttribute"><span
+    class="attr-name">rx</span></a> attribute.</p>
+<pre>
+&lt;?xml version="1.0" standalone="no"?&gt;
+&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;
+&lt;svg width="12cm" height="4cm" viewBox="0 0 1200 400"
+     xmlns="<a
+href="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</a>" version="1.1"&gt;
+  &lt;desc&gt;Example rect02 - rounded rectangles&lt;/desc&gt;
+  &lt;!-- Show outline of canvas using 'rect' element --&gt;
+  &lt;rect x="1" y="1" width="1198" height="398"
+        fill="none" stroke="blue" stroke-width="2"/&gt;
+  &lt;rect x="100" y="100" width="400" height="200" rx="50"
+        fill="green" /&gt;
+  &lt;g transform="translate(700 210) rotate(-30)"&gt;
+    &lt;rect x="0" y="0" width="400" height="200" rx="50"
+          fill="none" stroke="purple" stroke-width="30" /&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
+</pre>
+    <table summary="Example rect02">
+      <caption align="bottom">
+        Example rect02
+      </caption>
+      <tr>
+        <td><img
+        alt="Example rect02 - rounded rectangles expressed in user coordinates"
+         src="images/shapes/rect02.png" width="426"
+        height="142" /></td>
+      </tr>
+    </table>
+    <p class="view-as-svg"><a href="images/shapes/rect02.svg">View
+    this example as SVG (SVG-enabled browsers only)</a><br />
+     &nbsp;</p>
+    <a id="CircleElement" name="CircleElement"
+    class="indexref-circle#Q#_element"></a> 
+    <h2>9.3 The <span class="element-name">'circle'</span>
+    element</h2>
+    <p>The <span class="element-name">'circle'</span> element
+    defines a circle based on a center point and a radius.</p>
+    <table summary="circle element" class="dtd-fragment">
+      <tr>
+        <td>
+<pre class="dtd-fragment">
+&lt;!ENTITY % SVG.circle.extra.content "" &gt;
+&lt;!ENTITY % SVG.circle.element "INCLUDE" &gt;
+&lt;![%SVG.circle.element;[
+&lt;!ENTITY % SVG.circle.content
+    "(( %<a
+href="struct.html#id5181053">SVG.Description.class</a>; )*, ( %<a
+href="animate.html#id5199568">SVG.Animation.class</a>;
+        %SVG.circle.extra.content; )*)"
+&gt;
+&lt;!ELEMENT %<a
+href="shapes.html#CircleElement">SVG.circle.qname</a>; %SVG.circle.content; &gt;
+&lt;!-- end of SVG.circle.element --&gt;]]&gt;
+&lt;!ENTITY % SVG.circle.attlist "INCLUDE" &gt;
+&lt;![%SVG.circle.attlist;[
+&lt;!ATTLIST %<a
+href="shapes.html#CircleElement">SVG.circle.qname</a>;
+    %<a href="struct.html#core-att-mod">SVG.Core.attrib</a>;
+    %<a href="struct.html#id5190560">SVG.Conditional.attrib</a>;
+    %<a href="styling.html#id5189379">SVG.Style.attrib</a>;
+    %<a href="painting.html#paint-att-mod">SVG.Paint.attrib</a>;
+    %<a href="painting.html#paint-att-mod">SVG.Color.attrib</a>;
+    %<a
+href="painting.html#opacity-att-mod">SVG.Opacity.attrib</a>;
+    %<a
+href="painting.html#graphics-att-mod">SVG.Graphics.attrib</a>;
+    %<a href="masking.html">SVG.Clip.attrib</a>;
+    %<a href="masking.html">SVG.Mask.attrib</a>;
+    %<a href="filters.html#id5198232">SVG.Filter.attrib</a>;
+    %<a
+href="interact.html#graphical-events-att-mod">SVG.GraphicalEvents.attrib</a>;
+    %<a href="interact.html#id5196850">SVG.Cursor.attrib</a>;
+    %<a href="linking.html#err-att-mod">SVG.External.attrib</a>;
+    cx %<a
+href="types.html#DataTypeCoordinate">Coordinate.datatype</a>; #IMPLIED
+    cy %<a
+href="types.html#DataTypeCoordinate">Coordinate.datatype</a>; #IMPLIED
+    r %<a
+href="types.html#DataTypeLength">Length.datatype</a>; #REQUIRED
+    transform %<a
+href="types.html#DataTypeTransformList">TransformList.datatype</a>; #IMPLIED
+&gt;
+</pre>
+        </td>
+      </tr>
+    </table>
+    <div class="adef-list">
+      <p><em>Attribute definitions:</em></p>
+      <dl>
+        <dt><a id="CircleElementCXAttribute"
+        name="CircleElementCXAttribute"></a> <span
+        class="adef">cx</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeCoordinate">&lt;coordinate&gt;</a></span>"</dt>
+        <dd>The x-axis coordinate of the center of the
+        circle.<br />
+         If the attribute is not specified, the effect is as if a
+        value of "0" were specified.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+        <dt><a id="CircleElementCYAttribute"
+        name="CircleElementCYAttribute"></a> <span
+        class="adef">cy</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeCoordinate">&lt;coordinate&gt;</a></span>"</dt>
+        <dd>The y-axis coordinate of the center of the
+        circle.<br />
+         If the attribute is not specified, the effect is as if a
+        value of "0" were specified.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+        <dt><a id="CircleElementRAttribute"
+        name="CircleElementRAttribute"></a> <span
+        class="adef">r</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeLength">&lt;length&gt;</a></span>"</dt>
+        <dd>The radius of the circle.<br />
+         A negative value is an error (see <a
+        href="implnote.html#ErrorProcessing">Error processing</a>).
+        A value of zero disables rendering of the element.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+      </dl>
+      <br />
+    </div>
+    <p>The arc of a <span class="element-name">'circle'</span>
+    element begins at the "3 o'clock" point on the radius and
+    progresses towards the "9 o'clock" point. The starting point
+    and direction of the arc are affected by the user space
+    transform in the same manner as the geometry of the
+    element.</p>
+    <a id="ExampleCircle01" name="ExampleCircle01"></a> 
+    <p><span class="example-ref">Example circle01</span> consists
+    of a <span class="element-name">'circle'</span> element that is
+    filled with red and stroked with blue.</p>
+<pre>
+&lt;?xml version="1.0" standalone="no"?&gt;
+&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;
+&lt;svg width="12cm" height="4cm" viewBox="0 0 1200 400"
+     xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;
+  &lt;desc&gt;Example circle01 - circle filled with red and stroked with blue&lt;/desc&gt;
+  &lt;!-- Show outline of canvas using 'rect' element --&gt;
+  &lt;rect x="1" y="1" width="1198" height="398"
+        fill="none" stroke="blue" stroke-width="2"/&gt;
+  &lt;circle cx="600" cy="200" r="100"
+        fill="red" stroke="blue" stroke-width="10"  /&gt;
+&lt;/svg&gt;
+</pre>
+    <table summary="Example circle01">
+      <caption align="bottom">
+        Example circle01
+      </caption>
+      <tr>
+        <td><img
+        alt="Example circle01 - circle filled with red and stroked with blue"
+         src="images/shapes/circle01.png" width="426"
+        height="142" /></td>
+      </tr>
+    </table>
+    <p class="view-as-svg"><a
+    href="images/shapes/circle01.svg">View this example as SVG
+    (SVG-enabled browsers only)</a><br />
+     &nbsp;</p>
+    <a id="EllipseElement" name="EllipseElement"
+    class="indexref-ellipse#Q#_element"></a> 
+    <h2>9.4 The <span class="element-name">'ellipse'</span>
+    element</h2>
+    <p>The <span class="element-name">'ellipse'</span> element
+    defines an ellipse which is axis-aligned with the current <a
+    href="intro.html#TermUserCoordinateSystem">user coordinate
+    system</a> based on a center point and two radii.</p>
+    <table summary="ellipse element" class="dtd-fragment">
+      <tr>
+        <td>
+<pre class="dtd-fragment">
+&lt;!ENTITY % SVG.ellipse.extra.content "" &gt;
+&lt;!ENTITY % SVG.ellipse.element "INCLUDE" &gt;
+&lt;![%SVG.ellipse.element;[
+&lt;!ENTITY % SVG.ellipse.content
+    "(( %<a
+href="struct.html#id5181053">SVG.Description.class</a>; )*, ( %<a
+href="animate.html#id5199568">SVG.Animation.class</a>;
+        %SVG.ellipse.extra.content; )*)"
+&gt;
+&lt;!ELEMENT %<a
+href="shapes.html#EllipseElement">SVG.ellipse.qname</a>; %SVG.ellipse.content; &gt;
+&lt;!-- end of SVG.ellipse.element --&gt;]]&gt;
+&lt;!ENTITY % SVG.ellipse.attlist "INCLUDE" &gt;
+&lt;![%SVG.ellipse.attlist;[
+&lt;!ATTLIST %<a
+href="shapes.html#EllipseElement">SVG.ellipse.qname</a>;
+    %<a href="struct.html#core-att-mod">SVG.Core.attrib</a>;
+    %<a href="struct.html#id5190560">SVG.Conditional.attrib</a>;
+    %<a href="styling.html#id5189379">SVG.Style.attrib</a>;
+    %<a href="painting.html#paint-att-mod">SVG.Paint.attrib</a>;
+    %<a href="painting.html#paint-att-mod">SVG.Color.attrib</a>;
+    %<a
+href="painting.html#opacity-att-mod">SVG.Opacity.attrib</a>;
+    %<a
+href="painting.html#graphics-att-mod">SVG.Graphics.attrib</a>;
+    %<a href="masking.html">SVG.Clip.attrib</a>;
+    %<a href="masking.html">SVG.Mask.attrib</a>;
+    %<a href="filters.html#id5198232">SVG.Filter.attrib</a>;
+    %<a
+href="interact.html#graphical-events-att-mod">SVG.GraphicalEvents.attrib</a>;
+    %<a href="interact.html#id5196850">SVG.Cursor.attrib</a>;
+    %<a href="linking.html#err-att-mod">SVG.External.attrib</a>;
+    cx %<a
+href="types.html#DataTypeCoordinate">Coordinate.datatype</a>; #IMPLIED
+    cy %<a
+href="types.html#DataTypeCoordinate">Coordinate.datatype</a>; #IMPLIED
+    rx %<a
+href="types.html#DataTypeLength">Length.datatype</a>; #REQUIRED
+    ry %<a
+href="types.html#DataTypeLength">Length.datatype</a>; #REQUIRED
+    transform %<a
+href="types.html#DataTypeTransformList">TransformList.datatype</a>; #IMPLIED
+&gt;
+</pre>
+        </td>
+      </tr>
+    </table>
+    <div class="adef-list">
+      <p><em>Attribute definitions:</em></p>
+      <dl>
+        <dt><a id="EllipseElementCXAttribute"
+        name="EllipseElementCXAttribute"></a> <span
+        class="adef">cx</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeCoordinate">&lt;coordinate&gt;</a></span>"</dt>
+        <dd>The x-axis coordinate of the center of the
+        ellipse.<br />
+         If the attribute is not specified, the effect is as if a
+        value of "0" were specified.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+        <dt><a id="EllipseElementCYAttribute"
+        name="EllipseElementCYAttribute"></a> <span
+        class="adef">cy</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeCoordinate">&lt;coordinate&gt;</a></span>"</dt>
+        <dd>The y-axis coordinate of the center of the
+        ellipse.<br />
+         If the attribute is not specified, the effect is as if a
+        value of "0" were specified.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+        <dt><a id="EllipseElementRXAttribute"
+        name="EllipseElementRXAttribute"></a> <span
+        class="adef">rx</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeLength">&lt;length&gt;</a></span>"</dt>
+        <dd>The x-axis radius of the ellipse.<br />
+         A negative value is an error (see <a
+        href="implnote.html#ErrorProcessing">Error processing</a>).
+        A value of zero disables rendering of the element.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+        <dt><a id="EllipseElementRYAttribute"
+        name="EllipseElementRYAttribute"></a> <span
+        class="adef">ry</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeLength">&lt;length&gt;</a></span>"</dt>
+        <dd>The y-axis radius of the ellipse.<br />
+         A negative value is an error (see <a
+        href="implnote.html#ErrorProcessing">Error processing</a>).
+        A value of zero disables rendering of the element.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+      </dl>
+      <br />
+    </div>
+    <a id="ExampleEllipse01" name="ExampleEllipse01"></a> 
+    <p>The arc of an <span class="element-name">'ellipse'</span>
+    element begins at the "3 o'clock" point on the radius and
+    progresses towards the "9 o'clock" point. The starting point
+    and direction of the arc are affected by the user space
+    transform in the same manner as the geometry of the
+    element.</p>
+    <p><span class="example-ref">Example ellipse01</span> below
+    specifies the coordinates of the two ellipses in the user
+    coordinate system established by the <a
+    href="coords.html#ViewBoxAttribute"><span
+    class="attr-name">viewBox</span></a> attribute on the <a
+    href="struct.html#SVGElement"><span
+    class="element-name">'svg'</span></a> element and the <a
+    href="coords.html#TransformAttribute"><span
+    class="attr-name">transform</span></a> attribute on the <a
+    href="struct.html#GElement"><span
+    class="element-name">'g'</span></a> and <a
+    href="shapes.html#EllipseElement"><span
+    class="element-name">'ellipse'</span></a> elements. Both
+    ellipses use the default values of zero for the <a
+    href="shapes.html#EllipseElementCXAttribute"><span
+    class="attr-name">cx</span></a> and <a
+    href="shapes.html#EllipseElementCXAttribute"><span
+    class="attr-name">cy</span></a> attributes (the center of the
+    ellipse). The second ellipse is rotated.</p>
+<pre>
+&lt;?xml version="1.0" standalone="no"?&gt;
+&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;
+&lt;svg width="12cm" height="4cm" viewBox="0 0 1200 400"
+     xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;
+  &lt;desc&gt;Example ellipse01 - examples of ellipses&lt;/desc&gt;
+  &lt;!-- Show outline of canvas using 'rect' element --&gt;
+  &lt;rect x="1" y="1" width="1198" height="398"
+        fill="none" stroke="blue" stroke-width="2" /&gt;
+  &lt;g transform="translate(300 200)"&gt;
+    &lt;ellipse rx="250" ry="100"
+          fill="red"  /&gt;
+  &lt;/g&gt;
+  &lt;ellipse transform="translate(900 200) rotate(-30)" 
+        rx="250" ry="100"
+        fill="none" stroke="blue" stroke-width="20"  /&gt;
+&lt;/svg&gt;
+</pre>
+    <table summary="Example ellipse01">
+      <caption align="bottom">
+        Example ellipse01
+      </caption>
+      <tr>
+        <td><img
+        alt="Example ellipse01 - ellipses expressed in user coordinates"
+         src="images/shapes/ellipse01.png" width="426"
+        height="142" /></td>
+      </tr>
+    </table>
+    <p class="view-as-svg"><a
+    href="images/shapes/ellipse01.svg">View this example as SVG
+    (SVG-enabled browsers only)</a><br />
+     &nbsp;</p>
+    <a id="LineElement" name="LineElement"
+    class="indexref-line#Q#_element"></a> 
+    <h2>9.5 The <span class="element-name">'line'</span>
+    element</h2>
+    <p>The <span class="element-name">'line'</span> element defines
+    a line segment that starts at one point and ends at
+    another.</p>
+    <table summary="line element" class="dtd-fragment">
+      <tr>
+        <td>
+<pre class="dtd-fragment">
+&lt;!ENTITY % SVG.line.extra.content "" &gt;
+&lt;!ENTITY % SVG.line.element "INCLUDE" &gt;
+&lt;![%SVG.line.element;[
+&lt;!ENTITY % SVG.line.content
+    "(( %<a
+href="struct.html#id5181053">SVG.Description.class</a>; )*, ( %<a
+href="animate.html#id5199568">SVG.Animation.class</a>;
+        %SVG.line.extra.content; )*)"
+&gt;
+&lt;!ELEMENT %<a
+href="shapes.html#LineElement">SVG.line.qname</a>; %SVG.line.content; &gt;
+&lt;!-- end of SVG.line.element --&gt;]]&gt;
+&lt;!ENTITY % SVG.line.attlist "INCLUDE" &gt;
+&lt;![%SVG.line.attlist;[
+&lt;!ATTLIST %<a href="shapes.html#LineElement">SVG.line.qname</a>;
+    %<a href="struct.html#core-att-mod">SVG.Core.attrib</a>;
+    %<a href="struct.html#id5190560">SVG.Conditional.attrib</a>;
+    %<a href="styling.html#id5189379">SVG.Style.attrib</a>;
+    %<a href="painting.html#paint-att-mod">SVG.Paint.attrib</a>;
+    %<a href="painting.html#paint-att-mod">SVG.Color.attrib</a>;
+    %<a
+href="painting.html#opacity-att-mod">SVG.Opacity.attrib</a>;
+    %<a
+href="painting.html#graphics-att-mod">SVG.Graphics.attrib</a>;
+    %<a href="painting.html#id5195051">SVG.Marker.attrib</a>;
+    %<a href="masking.html">SVG.Clip.attrib</a>;
+    %<a href="masking.html">SVG.Mask.attrib</a>;
+    %<a href="filters.html#id5198232">SVG.Filter.attrib</a>;
+    %<a
+href="interact.html#graphical-events-att-mod">SVG.GraphicalEvents.attrib</a>;
+    %<a href="interact.html#id5196850">SVG.Cursor.attrib</a>;
+    %<a href="linking.html#err-att-mod">SVG.External.attrib</a>;
+    x1 %<a
+href="types.html#DataTypeCoordinate">Coordinate.datatype</a>; #IMPLIED
+    y1 %<a
+href="types.html#DataTypeCoordinate">Coordinate.datatype</a>; #IMPLIED
+    x2 %<a
+href="types.html#DataTypeCoordinate">Coordinate.datatype</a>; #IMPLIED
+    y2 %<a
+href="types.html#DataTypeCoordinate">Coordinate.datatype</a>; #IMPLIED
+    transform %<a
+href="types.html#DataTypeTransformList">TransformList.datatype</a>; #IMPLIED
+&gt;
+</pre>
+        </td>
+      </tr>
+    </table>
+    <div class="adef-list">
+      <p><em>Attribute definitions:</em></p>
+      <dl>
+        <dt><a id="LineElementX1Attribute"
+        name="LineElementX1Attribute"></a> <span
+        class="adef">x1</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeCoordinate">&lt;coordinate&gt;</a></span>"</dt>
+        <dd>The x-axis coordinate of the start of the line.<br />
+         If the attribute is not specified, the effect is as if a
+        value of "0" were specified.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+        <dt><a id="LineElementY1Attribute"
+        name="LineElementY1Attribute"></a> <span
+        class="adef">y1</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeCoordinate">&lt;coordinate&gt;</a></span>"</dt>
+        <dd>The y-axis coordinate of the start of the line.<br />
+         If the attribute is not specified, the effect is as if a
+        value of "0" were specified.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+        <dt><a id="LineElementX2Attribute"
+        name="LineElementX2Attribute"></a> <span
+        class="adef">x2</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeCoordinate">&lt;coordinate&gt;</a></span>"</dt>
+        <dd>The x-axis coordinate of the end of the line.<br />
+         If the attribute is not specified, the effect is as if a
+        value of "0" were specified.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+        <dt><a id="LineElementY2Attribute"
+        name="LineElementY2Attribute"></a> <span
+        class="adef">y2</span> = "<span class="attr-value"><a
+        href="types.html#DataTypeCoordinate">&lt;coordinate&gt;</a></span>"</dt>
+        <dd>The y-axis coordinate of the end of the line.<br />
+         If the attribute is not specified, the effect is as if a
+        value of "0" were specified.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+      </dl>
+      <br />
+       
+      <dl>
+        <dt><em>Attributes defined elsewhere:</em></dt>
+        <dd><span class="attr-name"><a
+        href="struct.html#Core.attrib">%stdAttrs;</a>, <a
+        href="struct.html#LangSpaceAttrs">%langSpaceAttrs;</a>, <a
+        href="styling.html#ClassAttribute">class</a>, <a
+        href="coords.html#TransformAttribute">transform</a>, <a
+        href="script.html#EventHandling">%graphicsElementEvents;</a>,
+        <a href="struct.html#Conditional.attrib">%testAttrs;</a>, <a
+        href="struct.html#ExternalResourcesRequiredAttribute">externalResourcesRequired</a>,
+        <a href="styling.html#StyleAttribute">style</a>, <a
+        href="styling.html#UsingPresentationAttributes">%PresentationAttributes-Color;</a>,
+        <a
+        href="styling.html#UsingPresentationAttributes">%PresentationAttributes-FillStroke;</a>,
+        <a
+        href="styling.html#UsingPresentationAttributes">%PresentationAttributes-Graphics;</a>.</span></dd>
+      </dl>
+    </div>
+    <p>Mathematically, a <a href="shapes.html#LineElement"><span
+    class="element-name">'line'</span></a> element can be mapped to
+    an equivalent <a href="paths.html#PathElement"><span
+    class="element-name">'path'</span></a> element as follows:
+    (Note: all coordinate and length values are first converted
+    into user space coordinates according to <a
+    href="coords.html#Units">Units</a>.)</p>
+    <ul>
+      <li>perform an absolute <a
+      href="paths.html#PathDataMovetoCommands">moveto</a> operation
+      to absolute location (<em>x1</em>,<em>y1</em>), where
+      <em>x1</em> and <em>y1</em> are the values of the <a
+      href="shapes.html#LineElement"><span
+      class="element-name">'line'</span></a> element's <a
+      href="shapes.html#LineElementX1Attribute"><span
+      class="attr-name">x1</span></a> and <a
+      href="shapes.html#LineElementY1Attribute"><span
+      class="attr-name">y1</span></a> attributes converted to user
+      space, respectively</li>
+      <li>perform an absolute <a
+      href="paths.html#PathDataLinetoCommands">lineto</a> operation
+      to absolute location (<em>x2</em>,<em>y2</em>), where
+      <em>x2</em> and <em>y2</em> are the values of the <a
+      href="shapes.html#LineElement"><span
+      class="element-name">'line'</span></a> element's <a
+      href="shapes.html#LineElementX2Attribute"><span
+      class="attr-name">x2</span></a> and <a
+      href="shapes.html#LineElementY2Attribute"><span
+      class="attr-name">y2</span></a> attributes converted to user
+      space, respectively</li>
+    </ul>
+    <p>Because <a href="shapes.html#LineElement"><span
+    class="element-name">'line'</span></a> elements are single
+    lines and thus are geometrically one-dimensional, they have no
+    interior; thus, <a href="shapes.html#LineElement"><span
+    class="element-name">'line'</span></a> elements are never
+    filled (see the <a href="painting.html#FillProperty"><span
+    class="prop-name">'fill'</span></a> property).</p>
+    <a id="ExampleLine01" name="ExampleLine01"></a> 
+    <p><span class="example-ref">Example line01</span> below
+    specifies the coordinates of the five lines in the user
+    coordinate system established by the <a
+    href="coords.html#ViewBoxAttribute"><span
+    class="attr-name">viewBox</span></a> attribute on the <a
+    href="struct.html#SVGElement"><span
+    class="element-name">'svg'</span></a> element. The lines have
+    different thicknesses.</p>
+<pre>
+&lt;?xml version="1.0" standalone="no"?&gt;
+&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;
+&lt;svg width="12cm" height="4cm" viewBox="0 0 1200 400"
+     xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;
+  &lt;desc&gt;Example line01 - lines expressed in user coordinates&lt;/desc&gt;
+  &lt;!-- Show outline of canvas using 'rect' element --&gt;
+  &lt;rect x="1" y="1" width="1198" height="398"
+        fill="none" stroke="blue" stroke-width="2" /&gt;
+  &lt;g stroke="green" &gt;
+    &lt;line x1="100" y1="300" x2="300" y2="100"
+            stroke-width="5"  /&gt;
+    &lt;line x1="300" y1="300" x2="500" y2="100"
+            stroke-width="10"  /&gt;
+    &lt;line x1="500" y1="300" x2="700" y2="100"
+            stroke-width="15"  /&gt;
+    &lt;line x1="700" y1="300" x2="900" y2="100"
+            stroke-width="20"  /&gt;
+    &lt;line x1="900" y1="300" x2="1100" y2="100"
+            stroke-width="25"  /&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
+</pre>
+    <table summary="Example line01">
+      <caption align="bottom">
+        Example line01
+      </caption>
+      <tr>
+        <td><img
+        alt="Example line01 - lines expressed in user coordinates"
+        src="images/shapes/line01.png" width="426"
+        height="142" /></td>
+      </tr>
+    </table>
+    <p class="view-as-svg"><a href="images/shapes/line01.svg">View
+    this example as SVG (SVG-enabled browsers only)</a><br />
+     &nbsp;</p>
+    <a id="PolylineElement" name="PolylineElement"
+    class="indexref-polyline#Q#_element"></a> 
+    <h2>9.6 The <span class="element-name">'polyline'</span>
+    element</h2>
+    <p>The <span class="element-name">'polyline'</span> element
+    defines a set of connected straight line segments. Typically,
+    <span class="element-name">'polyline'</span> elements define
+    open shapes.</p>
+    <table summary="polyline element" class="dtd-fragment">
+      <tr>
+        <td>
+<pre class="dtd-fragment">
+&lt;!ENTITY % SVG.polyline.extra.content "" &gt;
+&lt;!ENTITY % SVG.polyline.element "INCLUDE" &gt;
+&lt;![%SVG.polyline.element;[
+&lt;!ENTITY % SVG.polyline.content
+    "(( %<a
+href="struct.html#id5181053">SVG.Description.class</a>; )*, ( %<a
+href="animate.html#id5199568">SVG.Animation.class</a>;
+        %SVG.polyline.extra.content; )*)"
+&gt;
+&lt;!ELEMENT %<a
+href="shapes.html#PolylineElement">SVG.polyline.qname</a>; %SVG.polyline.content; &gt;
+&lt;!-- end of SVG.polyline.element --&gt;]]&gt;
+&lt;!ENTITY % SVG.polyline.attlist "INCLUDE" &gt;
+&lt;![%SVG.polyline.attlist;[
+&lt;!ATTLIST %<a
+href="shapes.html#PolylineElement">SVG.polyline.qname</a>;
+    %<a href="struct.html#core-att-mod">SVG.Core.attrib</a>;
+    %<a href="struct.html#id5190560">SVG.Conditional.attrib</a>;
+    %<a href="styling.html#id5189379">SVG.Style.attrib</a>;
+    %<a href="painting.html#paint-att-mod">SVG.Paint.attrib</a>;
+    %<a href="painting.html#paint-att-mod">SVG.Color.attrib</a>;
+    %<a
+href="painting.html#opacity-att-mod">SVG.Opacity.attrib</a>;
+    %<a
+href="painting.html#graphics-att-mod">SVG.Graphics.attrib</a>;
+    %<a href="painting.html#id5195051">SVG.Marker.attrib</a>;
+    %<a href="masking.html">SVG.Clip.attrib</a>;
+    %<a href="masking.html">SVG.Mask.attrib</a>;
+    %<a href="filters.html#id5198232">SVG.Filter.attrib</a>;
+    %<a
+href="interact.html#graphical-events-att-mod">SVG.GraphicalEvents.attrib</a>;
+    %<a href="interact.html#id5196850">SVG.Cursor.attrib</a>;
+    %<a href="linking.html#err-att-mod">SVG.External.attrib</a>;
+    points %<a
+href="shapes.html#PointsBNF">Points.datatype</a>; #REQUIRED
+    transform %<a
+href="types.html#DataTypeTransformList">TransformList.datatype</a>; #IMPLIED
+&gt;
+</pre>
+        </td>
+      </tr>
+    </table>
+    <div class="adef-list">
+      <p><em>Attribute definitions:</em></p>
+      <dl>
+        <dt><a id="PolylineElementPointsAttribute"
+        name="PolylineElementPointsAttribute"></a> <span
+        class="adef">points</span> = "<span class="attr-value"><a
+        href="shapes.html#PointsBNF">&lt;list-of-points&gt;</a></span>"</dt>
+        <dd>The points that make up the polyline. All coordinate
+        values are in the user coordinate system.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+      </dl>
+      <br />
+    </div>
+    <p>If an odd number of coordinates is provided, then the
+    element is in error, with the same user agent behavior as
+    occurs with an incorrectly specified <a
+    href="paths.html#PathElement"><span
+    class="element-name">'path'</span></a> element.</p>
+    <p>Mathematically, a <a
+    href="shapes.html#PolylineElement"><span
+    class="element-name">'polyline'</span></a> element can be
+    mapped to an equivalent <a href="paths.html#PathElement"><span
+    class="element-name">'path'</span></a> element as follows:</p>
+    <ul>
+      <li>perform an absolute <a
+      href="paths.html#PathDataMovetoCommands">moveto</a> operation
+      to the first coordinate pair in the list of points</li>
+      <li>for each subsequent coordinate pair, perform an absolute
+      <a href="paths.html#PathDataLinetoCommands">lineto</a>
+      operation to that coordinate pair.</li>
+    </ul>
+    <a id="ExamplePolyline01" name="ExamplePolyline01"></a> 
+    <p><span class="example-ref">Example polyline01</span> below
+    specifies a polyline in the user coordinate system established
+    by the <a href="coords.html#ViewBoxAttribute"><span
+    class="attr-name">viewBox</span></a> attribute on the <a
+    href="struct.html#SVGElement"><span
+    class="element-name">'svg'</span></a> element.</p>
+<pre>
+&lt;?xml version="1.0" standalone="no"?&gt;
+&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;
+&lt;svg width="12cm" height="4cm" viewBox="0 0 1200 400"
+     xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;
+  &lt;desc&gt;Example polyline01 - increasingly larger bars&lt;/desc&gt;
+  &lt;!-- Show outline of canvas using 'rect' element --&gt;
+  &lt;rect x="1" y="1" width="1198" height="398"
+        fill="none" stroke="blue" stroke-width="2" /&gt;
+  &lt;polyline fill="none" stroke="blue" stroke-width="10" 
+            points="50,375
+                    150,375 150,325 250,325 250,375
+                    350,375 350,250 450,250 450,375
+                    550,375 550,175 650,175 650,375
+                    750,375 750,100 850,100 850,375
+                    950,375 950,25 1050,25 1050,375
+                    1150,375" /&gt;
+&lt;/svg&gt;
+</pre>
+    <table summary="Example polyline01">
+      <caption align="bottom">
+        Example polyline01
+      </caption>
+      <tr>
+        <td><img
+        alt="Example polyline01 - increasingly larger bars"
+        src="images/shapes/polyline01.png" width="426"
+        height="142" /></td>
+      </tr>
+    </table>
+    <p class="view-as-svg"><a
+    href="images/shapes/polyline01.svg">View this example as SVG
+    (SVG-enabled browsers only)</a><br />
+     &nbsp;</p>
+    <a id="PolygonElement" name="PolygonElement"
+    class="indexref-polygon#Q#_element"></a> 
+    <h2>9.7 The <span class="element-name">'polygon'</span>
+    element</h2>
+    <p>The <span class="element-name">'polygon'</span> element
+    defines a closed shape consisting of a set of connected
+    straight line segments.</p>
+    <table summary="polygon element" class="dtd-fragment">
+      <tr>
+        <td>
+<pre class="dtd-fragment">
+&lt;!ENTITY % SVG.polygon.extra.content "" &gt;
+&lt;!ENTITY % SVG.polygon.element "INCLUDE" &gt;
+&lt;![%SVG.polygon.element;[
+&lt;!ENTITY % SVG.polygon.content
+    "(( %<a
+href="struct.html#id5181053">SVG.Description.class</a>; )*, ( %<a
+href="animate.html#id5199568">SVG.Animation.class</a>;
+        %SVG.polygon.extra.content; )*)"
+&gt;
+&lt;!ELEMENT %<a
+href="shapes.html#PolygonElement">SVG.polygon.qname</a>; %SVG.polygon.content; &gt;
+&lt;!-- end of SVG.polygon.element --&gt;]]&gt;
+&lt;!ENTITY % SVG.polygon.attlist "INCLUDE" &gt;
+&lt;![%SVG.polygon.attlist;[
+&lt;!ATTLIST %<a
+href="shapes.html#PolygonElement">SVG.polygon.qname</a>;
+    %<a href="struct.html#core-att-mod">SVG.Core.attrib</a>;
+    %<a href="struct.html#id5190560">SVG.Conditional.attrib</a>;
+    %<a href="styling.html#id5189379">SVG.Style.attrib</a>;
+    %<a href="painting.html#paint-att-mod">SVG.Paint.attrib</a>;
+    %<a href="painting.html#paint-att-mod">SVG.Color.attrib</a>;
+    %<a
+href="painting.html#opacity-att-mod">SVG.Opacity.attrib</a>;
+    %<a
+href="painting.html#graphics-att-mod">SVG.Graphics.attrib</a>;
+    %<a href="painting.html#id5195051">SVG.Marker.attrib</a>;
+    %<a href="masking.html">SVG.Clip.attrib</a>;
+    %<a href="masking.html">SVG.Mask.attrib</a>;
+    %<a href="filters.html#id5198232">SVG.Filter.attrib</a>;
+    %<a
+href="interact.html#graphical-events-att-mod">SVG.GraphicalEvents.attrib</a>;
+    %<a href="interact.html#id5196850">SVG.Cursor.attrib</a>;
+    %<a href="linking.html#err-att-mod">SVG.External.attrib</a>;
+    points %<a
+href="shapes.html#PointsBNF">Points.datatype</a>; #REQUIRED
+    transform %<a
+href="types.html#DataTypeTransformList">TransformList.datatype</a>; #IMPLIED
+&gt;
+</pre>
+        </td>
+      </tr>
+    </table>
+    <div class="adef-list">
+      <p><em>Attribute definitions:</em></p>
+      <dl>
+        <dt><a id="PolygonElementPointsAttribute"
+        name="PolygonElementPointsAttribute"></a> <span
+        class="adef">points</span> = "<span class="attr-value"><a
+        href="shapes.html#PointsBNF">&lt;list-of-points&gt;</a></span>"</dt>
+        <dd>The points that make up the polygon. All coordinate
+        values are in the user coordinate system.<br />
+         <span class="anim-target"><a
+        href="animate.html#Animatable">Animatable</a>:
+        yes.</span></dd>
+      </dl>
+      <br />
+    </div>
+    <p>If an odd number of coordinates is provided, then the
+    element is in error, with the same user agent behavior as
+    occurs with an incorrectly specified <a
+    href="paths.html#PathElement"><span
+    class="element-name">'path'</span></a> element.</p>
+    <p>Mathematically, a <a href="shapes.html#PolygonElement"><span
+    class="element-name">'polygon'</span></a> element can be mapped
+    to an equivalent <a href="paths.html#PathElement"><span
+    class="element-name">'path'</span></a> element as follows:</p>
+    <ul>
+      <li>perform an absolute <a
+      href="paths.html#PathDataMovetoCommands">moveto</a> operation
+      to the first coordinate pair in the list of points</li>
+      <li>for each subsequent coordinate pair, perform an absolute
+      <a href="paths.html#PathDataLinetoCommands">lineto</a>
+      operation to that coordinate pair</li>
+      <li>perform a <a
+      href="paths.html#PathDataClosePathCommand">closepath</a>
+      command</li>
+    </ul>
+    <a id="ExamplePolygon01" name="ExamplePolygon01"></a> 
+    <p><span class="example-ref">Example polygon01</span> below
+    specifies two polygons (a star and a hexagon) in the user
+    coordinate system established by the <a
+    href="coords.html#ViewBoxAttribute"><span
+    class="attr-name">viewBox</span></a> attribute on the <a
+    href="struct.html#SVGElement"><span
+    class="element-name">'svg'</span></a> element.</p>
+<pre>
+&lt;?xml version="1.0" standalone="no"?&gt;
+&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;
+&lt;svg width="12cm" height="4cm" viewBox="0 0 1200 400"
+     xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;
+  &lt;desc&gt;Example polygon01 - star and hexagon&lt;/desc&gt;
+  &lt;!-- Show outline of canvas using 'rect' element --&gt;
+  &lt;rect x="1" y="1" width="1198" height="398"
+        fill="none" stroke="blue" stroke-width="2" /&gt;
+  &lt;polygon fill="red" stroke="blue" stroke-width="10" 
+            points="350,75  379,161 469,161 397,215
+                    423,301 350,250 277,301 303,215
+                    231,161 321,161" /&gt;
+  &lt;polygon fill="lime" stroke="blue" stroke-width="10" 
+            points="850,75  958,137.5 958,262.5
+                    850,325 742,262.6 742,137.5" /&gt;
+&lt;/svg&gt;
+</pre>
+    <table summary="Example polygon01">
+      <caption align="bottom">
+        Example polygon01
+      </caption>
+      <tr>
+        <td><img alt="Example polygon01 - star and hexagon"
+        src="images/shapes/polygon01.png" width="426"
+        height="142" /></td>
+      </tr>
+    </table>
+    <p class="view-as-svg"><a
+    href="images/shapes/polygon01.svg">View this example as SVG
+    (SVG-enabled browsers only)</a><br />
+     &nbsp;</p>
+    <a id="PointsBNF" name="PointsBNF"
+    class="indexref-polyline_and_polygon_points_grammar"></a> 
+    <h3>9.8 The grammar for points specifications in <span
+    class="element-name">'polyline'</span> and <span
+    class="element-name">'polygon'</span> elements</h3>
+    <p>The following is the Backus-Naur Form (BNF) for points
+    specifications in <span class="element-name">'polyline'</span>
+    and <span class="element-name">'polygon'</span> elements. The
+    following notation is used:</p>
+    <ul>
+      <li>*: 0 or more</li>
+      <li>+: 1 or more</li>
+      <li>?: 0 or 1</li>
+      <li>(): grouping</li>
+      <li>|: separates alternatives</li>
+      <li>double quotes surround literals</li>
+    </ul>
+<pre>
+list-of-points:
+    wsp* coordinate-pairs? wsp*
+coordinate-pairs:
+    coordinate-pair
+    | coordinate-pair comma-wsp coordinate-pairs
+coordinate-pair:
+    coordinate comma-wsp coordinate
+coordinate:
+    number
+number:
+    sign? integer-constant
+    | sign? floating-point-constant
+comma-wsp:
+    (wsp+ comma? wsp*) | (comma wsp*)
+comma:
+    ","
+integer-constant:
+    digit-sequence
+floating-point-constant:
+    fractional-constant exponent?
+    | digit-sequence exponent
+fractional-constant:
+    digit-sequence? "." digit-sequence
+    | digit-sequence "."
+exponent:
+    ( "e" | "E" ) sign? digit-sequence
+sign:
+    "+" | "-"
+digit-sequence:
+    digit
+    | digit digit-sequence
+digit:
+    "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+wsp:
+    (#x20 | #x9 | #xD | #xA)+
+</pre>
+    <br />
+     
+    <h2><a id="shape-mod" name="shape-mod"></a>9.9 Shape
+    Module</h2>
+    <table border="1">
+      <tbody>
+        <tr>
+          <th colspan="1" rowspan="1">Elements</th>
+          <th colspan="1" rowspan="1">Attributes</th>
+          <th colspan="1" rowspan="1">Content Model</th>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1">path</td>
+          <td colspan="1" rowspan="1">Core.attrib, Conditional.attrib,
+          External.attrib, Style.attrib, transform, d,
+          pathLength, GraphicalEvents.attrib,
+          Paint.attrib, Paint.attrib,
+          Opacity.attrib, Graphics.attrib,
+          Cursor.attrib, Filter.attrib,
+          Mask.attrib, GraphicalEvents.attrib,
+          Clip.attrib, Marker.attrib</td>
+          <td colspan="1" rowspan="1">(Description.class |
+          Animation.class)*</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1">rect</td>
+          <td colspan="1" rowspan="1">Core.attrib, Conditional.attrib,
+          Style.attrib, GraphicalEvents.attrib,
+          Paint.attrib, Paint.attrib,
+          Opacity.attrib, Graphics.attrib,
+          Cursor.attrib, Filter.attrib,
+          Mask.attrib, GraphicalEvents.attrib,
+          Clip.attrib, x, y, width, height, rx, ry,
+          transform</td>
+          <td colspan="1" rowspan="1">(Description.class |
+          Animation.class)*</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1">circle</td>
+          <td colspan="1" rowspan="1">Core.attrib, Conditional.attrib,
+          Style.attrib, GraphicalEvents.attrib,
+          Paint.attrib, Paint.attrib,
+          Opacity.attrib, Graphics.attrib,
+          Cursor.attrib, Filter.attrib,
+          Mask.attrib, GraphicalEvents.attrib,
+          Clip.attrib, cx, cy, r, transform</td>
+          <td colspan="1" rowspan="1">(Description.class |
+          Animation.class)*</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1">line</td>
+          <td colspan="1" rowspan="1">Core.attrib, Conditional.attrib,
+          Style.attrib, GraphicalEvents.attrib,
+          Paint.attrib, Paint.attrib,
+          Opacity.attrib, Graphics.attrib,
+          Cursor.attrib, Filter.attrib,
+          Mask.attrib, GraphicalEvents.attrib,
+          Clip.attrib, x1, y1, x2, y2, transform</td>
+          <td colspan="1" rowspan="1">(Description.class |
+          Animation.class)*</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1">ellipse</td>
+          <td colspan="1" rowspan="1">Core.attrib, Conditional.attrib,
+          Style.attrib, GraphicalEvents.attrib,
+          Paint.attrib, Paint.attrib,
+          Opacity.attrib, Graphics.attrib,
+          Cursor.attrib, Filter.attrib,
+          Mask.attrib, GraphicalEvents.attrib,
+          Clip.attrib, cx, cy, rx, ry, transform</td>
+          <td colspan="1" rowspan="1">(Description.class |
+          Animation.class)*</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1">polyline</td>
+          <td colspan="1" rowspan="1">Core.attrib, Conditional.attrib,
+          Style.attrib, GraphicalEvents.attrib,
+          Paint.attrib, Paint.attrib,
+          Opacity.attrib, Graphics.attrib,
+          Cursor.attrib, Filter.attrib,
+          Mask.attrib, GraphicalEvents.attrib,
+          Clip.attrib, points, transform</td>
+          <td colspan="1" rowspan="1">(Description.class |
+          Animation.class)*</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1">polygon</td>
+          <td colspan="1" rowspan="1">Core.attrib, Conditional.attrib,
+          Style.attrib, GraphicalEvents.attrib,
+          Paint.attrib, Paint.attrib,
+          Opacity.attrib, Graphics.attrib,
+          Cursor.attrib, Filter.attrib,
+          Mask.attrib, GraphicalEvents.attrib,
+          Clip.attrib, points, transform</td>
+          <td colspan="1" rowspan="1">(Description.class |
+          Animation.class)*</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="div3">
+      <h3><br />
+       <a id="id5191043" name="id5191043"></a>9.9.1 Shape Content
+      Set</h3>
+      <p>The Shape Module defines the Shape.class content
+      set.</p>
+      <table border="1">
+        <tbody>
+          <tr>
+            <th colspan="1" rowspan="1">Content Set Name</th>
+            <th colspan="1" rowspan="1">Elements in Content
+            Set</th>
+          </tr>
+          <tr>
+            <td colspan="1" rowspan="1">Shape.class</td>
+            <td colspan="1" rowspan="1">rect, circle, line,
+            polyline, polygon, ellipse, path</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p><br />
+    <br />
+     <a id="DOMInterfaces" name="DOMInterfaces"></a></p>
+    <h2>9.10 DOM interfaces</h2>
+    <br />
+     <!-- AUTO-GENERATED DOM INTERFACES GO HERE --> 
+    <p>The following interfaces are defined below: <a
+    href="#InterfaceSVGRectElement">SVGRectElement</a>, <a
+    href="#InterfaceSVGCircleElement">SVGCircleElement</a>, <a
+    href="#InterfaceSVGEllipseElement">SVGEllipseElement</a>, <a
+    href="#InterfaceSVGLineElement">SVGLineElement</a>, <a
+    href="#InterfaceSVGAnimatedPoints">SVGAnimatedPoints</a>, <a
+    href="#InterfaceSVGPolylineElement">SVGPolylineElement</a>, <a
+    href="#InterfaceSVGPolygonElement">SVGPolygonElement</a>.</p>
+    <br />
+     <a id="InterfaceSVGRectElement" name="InterfaceSVGRectElement"
+    class="indexref-DOM_Interfaces::SVGRectElement"></a> 
+    <h3>Interface <span
+    class="DOMInterfaceName">SVGRectElement</span></h3>
+    <p>The <span class="DOMInterfaceName">SVGRectElement</span>
+    interface corresponds to the <span
+    class="element-name">'rect'</span> element.</p>
+    <dl>
+      <dt><br />
+       <b>IDL Definition</b></dt>
+      <dd>
+        <div class='idl-code'>
+<pre>
+interface SVGRectElement : 
+                SVGElement,
+                SVGTests,
+                SVGLangSpace,
+                SVGExternalResourcesRequired,
+                SVGStylable,
+                SVGTransformable,
+                events::EventTarget { 
+  readonly attribute SVGAnimatedLength x;
+  readonly attribute SVGAnimatedLength y;
+  readonly attribute SVGAnimatedLength width;
+  readonly attribute SVGAnimatedLength height;
+  readonly attribute SVGAnimatedLength rx;
+  readonly attribute SVGAnimatedLength ry;
+};
+</pre>
+        </div>
+        <br />
+      </dd>
+      <dt><b>Attributes</b></dt>
+      <dd>
+        <dl>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>x</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">x</span> on the given <span
+          class="element-name">'rect'</span> element.</dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>y</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">y</span> on the given <span
+          class="element-name">'rect'</span> element.</dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>width</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">width</span> on the given <span
+          class="element-name">'rect'</span> element.</dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>height</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">height</span> on the given <span
+          class="element-name">'rect'</span> element.</dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>rx</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">rx</span> on the given <span
+          class="element-name">'rect'</span> element.</dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>ry</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">ry</span> on the given <span
+          class="element-name">'rect'</span> element.</dd>
+        </dl>
+      </dd>
+    </dl>
+    <br />
+     <a id="InterfaceSVGCircleElement"
+    name="InterfaceSVGCircleElement"
+    class="indexref-DOM_Interfaces::SVGCircleElement"></a> 
+    <h3>Interface <span
+    class="DOMInterfaceName">SVGCircleElement</span></h3>
+    <p>The <span class="DOMInterfaceName">SVGCircleElement</span>
+    interface corresponds to the <span
+    class="element-name">'circle'</span> element.</p>
+    <dl>
+      <dt><br />
+       <b>IDL Definition</b></dt>
+      <dd>
+        <div class='idl-code'>
+<pre>
+interface SVGCircleElement : 
+                SVGElement,
+                SVGTests,
+                SVGLangSpace,
+                SVGExternalResourcesRequired,
+                SVGStylable,
+                SVGTransformable,
+                events::EventTarget { 
+  readonly attribute SVGAnimatedLength cx;
+  readonly attribute SVGAnimatedLength cy;
+  readonly attribute SVGAnimatedLength r;
+};
+</pre>
+        </div>
+        <br />
+      </dd>
+      <dt><b>Attributes</b></dt>
+      <dd>
+        <dl>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>cx</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">cx</span> on the given <span
+          class="element-name">'circle'</span> element.</dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>cy</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">cy</span> on the given <span
+          class="element-name">'circle'</span> element.</dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>r</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">r</span> on the given <span
+          class="element-name">'circle'</span> element.</dd>
+        </dl>
+      </dd>
+    </dl>
+    <br />
+     <a id="InterfaceSVGEllipseElement"
+    name="InterfaceSVGEllipseElement"
+    class="indexref-DOM_Interfaces::SVGEllipseElement"></a> 
+    <h3>Interface <span
+    class="DOMInterfaceName">SVGEllipseElement</span></h3>
+    <p>The <span class="DOMInterfaceName">SVGEllipseElement</span>
+    interface corresponds to the <span
+    class="element-name">'ellipse'</span> element.</p>
+    <dl>
+      <dt><br />
+       <b>IDL Definition</b></dt>
+      <dd>
+        <div class='idl-code'>
+<pre>
+interface SVGEllipseElement : 
+                SVGElement,
+                SVGTests,
+                SVGLangSpace,
+                SVGExternalResourcesRequired,
+                SVGStylable,
+                SVGTransformable,
+                events::EventTarget { 
+  readonly attribute SVGAnimatedLength cx;
+  readonly attribute SVGAnimatedLength cy;
+  readonly attribute SVGAnimatedLength rx;
+  readonly attribute SVGAnimatedLength ry;
+};
+</pre>
+        </div>
+        <br />
+      </dd>
+      <dt><b>Attributes</b></dt>
+      <dd>
+        <dl>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>cx</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">cx</span> on the given <span
+          class="element-name">'ellipse'</span> element.</dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>cy</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">cy</span> on the given <span
+          class="element-name">'ellipse'</span> element.</dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>rx</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">rx</span> on the given <span
+          class="element-name">'ellipse'</span> element.</dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>ry</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">ry</span> on the given <span
+          class="element-name">'ellipse'</span> element.</dd>
+        </dl>
+      </dd>
+    </dl>
+    <br />
+     <a id="InterfaceSVGLineElement" name="InterfaceSVGLineElement"
+    class="indexref-DOM_Interfaces::SVGLineElement"></a> 
+    <h3>Interface <span
+    class="DOMInterfaceName">SVGLineElement</span></h3>
+    <p>The <span class="DOMInterfaceName">SVGLineElement</span>
+    interface corresponds to the <span
+    class="element-name">'line'</span> element.</p>
+    <dl>
+      <dt><br />
+       <b>IDL Definition</b></dt>
+      <dd>
+        <div class='idl-code'>
+<pre>
+interface SVGLineElement : 
+                SVGElement,
+                SVGTests,
+                SVGLangSpace,
+                SVGExternalResourcesRequired,
+                SVGStylable,
+                SVGTransformable,
+                events::EventTarget { 
+  readonly attribute SVGAnimatedLength x1;
+  readonly attribute SVGAnimatedLength y1;
+  readonly attribute SVGAnimatedLength x2;
+  readonly attribute SVGAnimatedLength y2;
+};
+</pre>
+        </div>
+        <br />
+      </dd>
+      <dt><b>Attributes</b></dt>
+      <dd>
+        <dl>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>x1</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">x1</span> on the given <span
+          class="element-name">'line'</span> element.</dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>y1</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">y1</span> on the given <span
+          class="element-name">'line'</span> element.</dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>x2</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">x2</span> on the given <span
+          class="element-name">'line'</span> element.</dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGAnimatedLength</span> <span
+          class='dom-attr-name'>y2</span></dt>
+          <dd>Corresponds to attribute <span
+          class="attr-name">y2</span> on the given <span
+          class="element-name">'line'</span> element.</dd>
+        </dl>
+      </dd>
+    </dl>
+    <br />
+     <a id="InterfaceSVGAnimatedPoints"
+    name="InterfaceSVGAnimatedPoints"
+    class="indexref-DOM_Interfaces::SVGAnimatedPoints"></a> 
+    <h3>Interface <span
+    class="DOMInterfaceName">SVGAnimatedPoints</span></h3>
+    <p>The <span class="DOMInterfaceName">SVGAnimatedPoints</span>
+    interface supports elements which have a 'points' attribute
+    which holds a list of coordinate values and which support the
+    ability to animate that attribute.</p>
+    <p>Additionally, the 'points' attribute on the original element
+    accessed via the XML DOM (e.g., using the <span
+    class="dom-method-name">getAttribute()</span> method call) will
+    reflect any changes made to <span
+    class="dom-attr-name">points</span>.</p>
+    <dl>
+      <dt><br />
+       <b>IDL Definition</b></dt>
+      <dd>
+        <div class='idl-code'>
+<pre>
+interface SVGAnimatedPoints { 
+  readonly attribute SVGPointList   points;
+  readonly attribute SVGPointList   animatedPoints;
+};
+</pre>
+        </div>
+        <br />
+      </dd>
+      <dt><b>Attributes</b></dt>
+      <dd>
+        <dl>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGPointList</span> <span
+          class='dom-attr-name'>points</span></dt>
+          <dd>
+            <p>Provides access to the base (i.e., static) contents
+            of the <span class="attr-name">points</span>
+            attribute.</p>
+          </dd>
+          <dt><span class="dom-readonly">readonly</span> <span
+          class='dom-attr-type'>SVGPointList</span> <span
+          class='dom-attr-name'>animatedPoints</span></dt>
+          <dd>
+            <p>Provides access to the current animated contents of
+            the <span class="attr-name">points</span> attribute. If
+            the given attribute or property is being animated,
+            contains the current animated value of the attribute or
+            property. If the given attribute or property is not
+            currently being animated, contains the same value as
+            'points'.</p>
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+    <br />
+     <a id="InterfaceSVGPolylineElement"
+    name="InterfaceSVGPolylineElement"
+    class="indexref-DOM_Interfaces::SVGPolylineElement"></a> 
+    <h3>Interface <span
+    class="DOMInterfaceName">SVGPolylineElement</span></h3>
+    <p>The <span class="DOMInterfaceName">SVGPolylineElement</span>
+    interface corresponds to the <span
+    class="element-name">'polyline'</span> element.</p>
+    <dl>
+      <dt><br />
+       <b>IDL Definition</b></dt>
+      <dd>
+        <div class='idl-code'>
+<pre>
+interface SVGPolylineElement : 
+                SVGElement,
+                SVGTests,
+                SVGLangSpace,
+                SVGExternalResourcesRequired,
+                SVGStylable,
+                SVGTransformable,
+                events::EventTarget,
+                SVGAnimatedPoints {};
+</pre>
+        </div>
+        <br />
+      </dd>
+    </dl>
+    <br />
+     <a id="InterfaceSVGPolygonElement"
+    name="InterfaceSVGPolygonElement"
+    class="indexref-DOM_Interfaces::SVGPolygonElement"></a> 
+    <h3>Interface <span
+    class="DOMInterfaceName">SVGPolygonElement</span></h3>
+    <p>The <span class="DOMInterfaceName">SVGPolygonElement</span>
+    interface corresponds to the <span
+    class="element-name">'polygon'</span> element.</p>
+    <dl>
+      <dt><br />
+       <b>IDL Definition</b></dt>
+      <dd>
+        <div class='idl-code'>
+<pre>
+interface SVGPolygonElement : 
+                SVGElement,
+                SVGTests,
+                SVGLangSpace,
+                SVGExternalResourcesRequired,
+                SVGStylable,
+                SVGTransformable,
+                events::EventTarget,
+                SVGAnimatedPoints {};
+</pre>
+        </div>
+        <br />
+      </dd>
+    </dl>
+    <hr class="navbar" />
+    <div class="navlinks">
+      <p><a href="paths.html">previous</a> &nbsp; <a
+      href="text.html">next</a> &nbsp; <a
+      href="index.html#minitoc">contents</a> &nbsp; <a
+      href="eltindex.html">elements</a> &nbsp; <a
+      href="attindex.html">attributes</a> &nbsp; <a
+      href="propidx.html">properties</a> &nbsp; <a
+      href="indexlist.html">index</a> &nbsp;</p>
+    </div>
+  </body>
+</html>

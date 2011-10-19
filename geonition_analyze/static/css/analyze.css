@@ -1,0 +1,77 @@
+
+#header {
+    height: 30px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+/*
+ toolbar css
+*/
+#toolbar {
+    height: 20px;
+    width: 100%;
+    padding-left: 10px;
+}
+#toolbar a {
+    margin-right: 10px;
+}
+
+
+#map {
+    position: absolute;
+    bottom: 0px;
+    top: 50px;
+    left: 200px;
+    right: 250px;
+    background-color: #AAEEAA;
+}
+
+.dialog {
+    display: none;
+}
+
+/*
+ Layers css
+*/
+#layers {
+    position: absolute;
+    bottom: 0px;
+    top: 50px;
+    left: 0px;
+    width: 180px;
+}
+
+#layers svg {
+    height: 18px;
+    width: 18px;
+}
+#layers .layer {
+    height: 50px;
+    width: 100%;
+    border: 1px dotted black;
+    padding: 5px;
+    padding-left: 10px;
+}
+#layers .layer div {
+    display: inline-block;
+}
+#layers .layer .layer_name {
+    width: 140px;
+    text-align: center;
+}
+#layers .layer .layer_type_color {
+    width: 18px;
+    height: 18px;
+}
+/*
+ feature properties css
+*/
+#feature_properties {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    top: 50px;
+    width: 230px;
+}
+

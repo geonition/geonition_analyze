@@ -1,0 +1,27 @@
+<!-- html to for the layer
+takes params
+
+geometry_type: point, polyline, polygon
+color: color of the layer
+name: name for layer
+-->
+
+<div class="layer">
+    <input type="checkbox" name="visible" value="layer_name" />
+    <div class="layer_name">point layer</div>
+    <div class="layer_type_color">
+        {% if geometry_type = 'point' %}
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 18 18">
+            <circle cx="9" cy="9" r="6" fill="{{ color }}" />
+        </svg>
+        {% else %}{% if geometry_type = 'polyline' %}
+        {% else %}{% if geometry_type = 'polygon' %}
+        {% endif %}
+    </div>
+    <div class="remove_layer">
+        <a>remove layer</a>
+    </div>
+    <div class="edit_layer">
+        <a>edit layer</a>
+    </div>
+</div>
