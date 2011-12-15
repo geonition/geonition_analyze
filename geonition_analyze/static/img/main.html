@@ -1,0 +1,653 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="dj_gecko dj_contentbox" xmlns="http://www.w3.org/1999/xhtml" lang="fi"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<title>pehmoGIS</title>
+
+
+<link rel="shortcut icon" href="http://localhost:8000/static/images/favicon.gif" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="main_files/tundra.css">
+<link rel="stylesheet" type="text/css" href="main_files/style.css">
+<link rel="stylesheet" type="text/css" href="main_files/reset.css">
+
+
+<!--[if IE]>
+<style type="text/css">
+	@import url(static/styles/style-IE.css);
+</style>
+<![endif]-->
+<!--[if lt IE 8]>
+<style type="text/css">
+	@import url(static/styles/style-lt-IE8.css);
+</style>
+<![endif]-->
+<!--[if lt IE 7]>
+<style type="text/css">
+	@import url(static/styles/style-IE6.css);
+</style>
+<![endif]-->
+<!--[if IE 8]>
+<style type="text/css">
+	/*div#popup {
+		z-index: auto;
+	}
+	#map {
+		z-index: auto;
+	}*/
+        div#popup div#popup-content form table td {
+            position: relative;
+            z-index: -1;
+        }
+	
+</style>
+<![endif]-->
+
+
+
+
+<!-- google analytics snippet -->
+<script src="main_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17683722-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script src="main_files/firebug.js" charset="utf-8" type="text/javascript"></script><link href="main_files/jsapi.css" media="all" type="text/css" rel="stylesheet"><link href="main_files/InfoWindow.css" media="all" type="text/css" rel="stylesheet"><script src="main_files/svg.js" charset="utf-8" type="text/javascript"></script><script src="main_files/jsapi_fi.js" charset="utf-8" type="text/javascript"></script><script src="main_files/Form.js" charset="utf-8" type="text/javascript"></script><script src="main_files/CheckBox.js" charset="utf-8" type="text/javascript"></script><script src="main_files/TextBox.js" charset="utf-8" type="text/javascript"></script><script src="main_files/ValidationTextBox.js" charset="utf-8" type="text/javascript"></script><script src="main_files/NumberTextBox.js" charset="utf-8" type="text/javascript"></script><script src="main_files/NumberSpinner.js" charset="utf-8" type="text/javascript"></script><script src="main_files/FilteringSelect.js" charset="utf-8" type="text/javascript"></script><script src="main_files/SimpleTextarea.js" charset="utf-8" type="text/javascript"></script><script src="main_files/regexp.js" charset="utf-8" type="text/javascript"></script><script src="main_files/html.js" charset="utf-8" type="text/javascript"></script><script src="main_files/shape.js" charset="utf-8" type="text/javascript"></script><script src="main_files/path.js" charset="utf-8" type="text/javascript"></script><script src="main_files/_FormMixin.js" charset="utf-8" type="text/javascript"></script><script src="main_files/ToggleButton.js" charset="utf-8" type="text/javascript"></script><script src="main_files/Tooltip.js" charset="utf-8" type="text/javascript"></script><script src="main_files/validate.js" charset="utf-8" type="text/javascript"></script><script src="main_files/_Spinner.js" charset="utf-8" type="text/javascript"></script><script src="main_files/ComboBox.js" charset="utf-8" type="text/javascript"></script><script src="main_files/simpleFetch.js" charset="utf-8" type="text/javascript"></script><script src="main_files/filter.js" charset="utf-8" type="text/javascript"></script><script src="main_files/ComboBox_002.js" charset="utf-8" type="text/javascript"></script><script src="main_files/sorter.js" charset="utf-8" type="text/javascript"></script><script charset="utf-8" id="dojoIoScript2" src="main_files/MapServer.txt" type="text/javascript"></script></head>
+<body style="cursor: default;" class="tundra">
+
+<script type="text/javascript">
+<!--
+document.body.style.cursor = "wait";
+-->
+</script>
+
+<div id="left">
+<div id="left_content">
+<div id="left-bg">
+</div> <!-- left-bg -->
+
+
+
+
+    <!--
+    <div id="logo"></div>
+    -->
+    <div id="languages">
+        
+            <a href="http://localhost:8000/setlang/?lang=sv">På Svenska</a>
+        
+        
+    </div>
+    
+    <div id="header">
+        <h1><i>Sinun</i> <b>Vaasasi</b></h1>
+        <p>Merkitse kartalle millainen paikka Vaasa on asua ja elää</p>
+    </div>
+
+
+
+
+
+<div id="backlink" onmousedown="get('/mainleft/','left_content')">&lt;&lt; Pääsivulle</div>
+
+
+<div class="section compact">
+<div class="compact">
+
+
+
+<div id="about_environment" class="green link" onmousedown="get('/sections/about_environment/', 'left_content');">
+<div class="header closed">
+<div class="hover_effect">
+<div class="icon"><div class="bubbleicon icon_picture"></div></div>
+<span class="category">Arvioi ympäristöäsi</span>
+</div> <!-- hoover_effect -->
+</div> <!-- header -->
+</div> <!-- about environment -->
+
+
+
+
+<div id="modify_environment" class="orange link" onmousedown="get('/sections/modify_environment/', 'left_content')">
+<div class="header closed">
+<div class="hover_effect">
+<div class="icon"><div class="shovel icon_picture"></div></div>
+<span class="category">Anna parannusehdotuksia</span>
+</div> <!-- hoover_effect -->
+</div> <!-- header -->
+</div>
+
+
+
+
+<div id="services" class="purple">
+<div class="header open" onclick="get('/mainleft/','left_content')">
+<div class="hover_effect">
+<span class="description">Arvioi arjen palveluitasi</span>
+</div> <!-- hoover_effect -->
+</div> <!-- header -->
+<div class="content">
+
+
+<div class="widget-definitions">
+<script type="application/json">
+[
+
+{
+"type": "buttonwidget",
+"json": {
+	"id": "store",
+	"categoryid": "store"
+	},
+"selector": "#store"
+},
+{
+"type": "buttonwidget",
+"json": {
+	"id": "school",
+	"categoryid": "school"
+	},
+"selector": "#school"
+},
+
+{
+"type": "buttonwidget",
+"json": {
+	"id": "store_route",
+	"categoryid": "store_route"
+	},
+"selector": "#store_route"
+},
+{
+"type": "buttonwidget",
+"json": {
+	"id": "school_route",
+	"categoryid": "school_route"
+	},
+"selector": "#school_route"
+},
+{
+"type": "buttonwidget",
+"json": {
+	"id": "daycare",
+	"categoryid": "daycare"
+	},
+"selector": "#daycare"
+},
+{
+"type": "buttonwidget",
+"json": {
+	"id": "daycare_route",
+	"categoryid": "daycare_route"
+	},
+"selector": "#daycare_route"
+},
+{
+"type": "buttonwidget",
+"json": {
+	"id": "work_study_place",
+	"categoryid": "work_study_place"
+	},
+"selector": "#work_study_place"
+},
+{
+"type": "buttonwidget",
+"json": {
+	"id": "work_study_route",
+	"categoryid": "work_study_route"
+	},
+"selector": "#work_study_route"
+},
+{
+"type": "buttonwidget",
+"json": {
+	"id": "hobby_place",
+	"categoryid": "hobby_place"
+	},
+"selector": "#hobby_place"
+},
+{
+"type": "buttonwidget",
+"json": {
+	"id": "route_to_hobby",
+	"categoryid": "route_to_hobby"
+	},
+"selector": "#route_to_hobby"
+},
+{
+"type": "buttonwidget",
+"json": {
+	"id": "culture_place",
+	"categoryid": "culture_place"
+	},
+"selector": "#culture_place"
+},
+{
+"type": "buttonwidget",
+"json": {
+	"id": "greenspace_place",
+	"categoryid": "greenspace_place"
+	},
+"selector": "#greenspace_place"
+},
+{
+"type": "buttonwidget",
+"json": {
+	"id": "other_service",
+	"categoryid": "other_service"
+	},
+"selector": "#other_service"
+},
+{
+"type": "buttonwidget",
+"json": {
+    "id": "other_service_route",
+    "categoryid": "other_service_route"
+    },
+"selector": "#other_service_route"
+},
+{
+"type": "buttonwidget",
+"json": {
+	"id": "outdoor_route",
+	"categoryid": "outdoor_route"
+	},
+"selector": "#outdoor_route"
+}
+]
+</script>
+</div>
+
+
+<p>Merkitse kartalle käyttämiesi palveluiden sijainti ja reitti. Etsi 
+ensin paikka kartalta, klikkaa haluamaasi painiketta (alla) ja tämän 
+jälkeen karttaa siitä kohdasta, jonne haluat tallentaa merkinnän tai 
+josta haluat aloittaa reitin piirtämisen.</p>
+
+<a href="http://localhost:8000/instructions#point" target="_blank">Ohje</a>
+
+<table class="service-table">
+<tbody><tr>
+<td>Merkitse palvelu kartalle</td>
+<td>Piirrä reitti kartalle</td>
+</tr>
+
+<tr>
+<td>
+
+
+<div id="store" class="small_button">
+<span class="left"></span>
+<span class="text">Kauppa</span>
+<span class="right"></span>
+<span class="marker point"></span>
+</div>
+
+
+</td>
+<td>
+
+
+<div id="store_route" class="small_button">
+<span class="left"></span>
+<span class="text">Kauppamatka</span>
+<span class="right"></span>
+<span class="marker route"></span>
+</div>
+
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+
+<div id="school" class="small_button">
+<span class="left"></span>
+<span class="text">Koulu</span>
+<span class="right"></span>
+<span class="marker point"></span>
+</div>
+
+
+</td>
+<td>
+    <div id="school_route" class="small_button">
+        <span class="left"></span>
+        <span class="text">Koulumatka</span>
+    	<span class="right"></span>
+    	<span class="marker route"></span>
+    </div>
+</td>
+</tr>
+
+
+<tr>
+<td>
+
+<div id="daycare" class="small_button">
+<span class="left"></span>
+<span class="text">Päiväkoti</span>
+<span class="right"></span>
+<span class="marker point"></span>
+</div>
+
+
+</td>
+<td>
+    
+<div id="daycare_route" class="small_button">
+    <span class="left"></span>
+    <span class="text">Päiväkotimatka</span>
+    <span class="right"></span>
+    <span class="marker route"></span>
+</div>
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+
+<div id="work_study_place" class="small_button">
+<span class="left"></span>
+<span class="text">Työ- tai opiskelupaikka</span>
+<span class="right"></span>
+<span class="marker point"></span>
+</div>
+
+
+</td>
+<td>
+    <div id="work_study_route" class="small_button">
+        <span class="left"></span>
+        <span class="text">Työ- tai opiskelumatka</span>
+        <span class="right"></span>
+        <span class="marker route"></span>
+    </div>
+</td>
+</tr>
+
+
+<tr>
+<td>
+
+
+<div id="hobby_place" class="small_button">
+<span class="left"></span>
+<span class="text">Harrastuspaikka</span>
+<span class="right"></span>
+<span class="marker point"></span>
+</div>
+
+
+</td>
+<td>
+    <div id="route_to_hobby" class="small_button">
+        <span class="left"></span>
+        <span class="text">Harrastusmatka</span>
+        <span class="right"></span>
+        <span class="marker route"></span>
+    </div>
+</td>
+</tr>
+
+
+<tr>
+<td>
+
+
+<div id="culture_place" class="small_button">
+<span class="left"></span>
+<span class="text">Kulttuuripalvelu</span>
+<span class="right"></span>
+<span class="marker point"></span>
+</div>
+
+</td>
+
+<td>
+    
+
+
+</td>
+</tr>
+
+
+<tr>
+<td>
+    
+
+
+</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<div id="greenspace_place" class="small_button">
+<span class="left"></span>
+<span class="text">Lähiviheralue</span>
+<span class="right"></span>
+<span class="marker area green"></span>
+</div>
+
+</td>
+<td>
+</td>
+</tr>
+
+
+<tr>
+<td>
+
+<div id="other_service" class="small_button">
+<span class="left"></span>
+<span class="text">Muu palvelu</span>
+<span class="right"></span>
+<span class="marker point"></span>
+</div>
+
+</td>
+<td>
+
+    <div id="other_service_route" class="small_button">
+        <span class="left"></span>
+        <span class="text">Muu palvelureitti</span>
+        <span class="right"></span>
+        <span class="marker route"></span>
+    </div>
+
+</td>
+</tr>
+
+<tr>
+
+<td>
+    
+    <p>Piirrä vielä kartalle ulkoilureittisi:</p>
+    
+<div id="outdoor_route" class="small_button">
+<span class="left"></span>
+<span class="text">Ulkoilureitti</span>
+<span class="right"></span>
+<span class="marker route green"></span>
+</div>
+
+</td>
+<td></td>
+
+</tr>
+
+</tbody></table>
+
+</div><!-- content -->
+<div class="footer">&nbsp;</div>
+</div>
+
+
+
+
+<div id="users-map" class="blue link" onmousedown="show_all_graphics_layers();get('/sections/users_map/', 'left_content');">
+<div class="header closed">
+<div class="hover_effect">
+<div class="icon"><div class="person_map_icon icon_picture"></div></div>
+<span class="category">Katso omaa karttaasi</span>
+</div> <!-- hoover_effect -->
+</div> <!-- header -->
+</div> <!-- users_map -->
+
+
+
+
+
+<div id="user-profile" class="turquoise link" onmousedown="get('/sections/user_profile/', 'left_content')">
+<div class="header closed">
+<div class="hover_effect">
+<div class="icon"><div class="person icon_picture"></div></div>
+<span class="category">Muuta omia tietojasi</span>
+</div> <!-- hoover_effect -->
+</div> <!-- header -->
+</div> <!-- user-profile -->
+
+
+</div> <!-- compact -->
+</div> <!-- section -->
+
+
+
+<div class="general compact">
+
+
+<div class="link" onmousedown="get('/not_ready/takaisinkytkenta/', 'popup-content');show('popup');window.scrollTo(0,0);">
+<span class="icon kiikarit"><span class="icon_picture"></span></span>
+<span class="name">
+Katso vaasalaisten antamia vastauksia
+</span>
+</div> <!-- link -->
+<!-- ideakilpailu koomentoitu pois, koska ei ole järkevää sisältöä -->
+<div class="link" onmousedown="window.location.assign('idea_competition/competition')">
+<span class="icon idea"><span class="icon_picture"></span></span>
+<span class="name">
+Vaasan Palosaaren salmen alueen ideakilpailu
+</span>
+</div>
+<!--
+<div class="link">
+<div class="icon gram"></div>
+<div class="name">Uutiset</div>
+</div>-->
+<div class="link" onmousedown="get('/feedback_form/', 'popup-content');show('popup');window.scrollTo(0,0);">
+<span class="icon gram"><span class="icon_picture"></span></span>
+<span class="name">
+Palautetta verkkopalvelusta
+</span> <!-- name -->
+</div> <!-- link -->
+
+<div class="link" onmousedown="window.open('/instructions');">
+<span class="icon point"><span class="icon_picture"></span></span>
+<span class="name">
+<!--<a href="/instructions" target="_blank">-->
+Ohjeet ja lisätietoa
+
+</span>
+</div>
+
+</div> <!-- general compact -->
+
+
+</div> <!-- left_content -->
+<div id="pehmogis_logo"></div>
+</div> <!-- left -->
+
+<div class="map" id="map">
+
+<!--<div id="satellite_map_button" onmousedown="toggleSatelliteMap()">
+<div id="satellite_button_activity">
+<span class="left-border"></span>
+<span class="text">Ilmakuva</span>
+<span class="right-border"></span>
+</div>
+</div>-->
+
+
+<div class="container" style="width: 1261px; height: 691px;" id="map_root"><div style="-moz-user-select: none; cursor: default;" class="container" id="map_container"><div class="layersDiv" id="map_layers"><div id="map_layer0" style="position: absolute; left: -1px; top: -48px; width: 1261px; height: 691px; overflow: visible; z-index: 0; display: block;"><img src="main_files/2466.png" style="left: -358px; top: -184px; width: 512px; height: 512px; visibility: visible;" class="layerTile" id="map_layer0_tile_5_1378_2466"><img src="main_files/2466_002.png" style="left: -358px; top: 328px; width: 512px; height: 512px; visibility: visible;" class="layerTile" id="map_layer0_tile_5_1379_2466"><img src="main_files/2467.png" style="left: 154px; top: -184px; width: 512px; height: 512px; visibility: visible;" class="layerTile" id="map_layer0_tile_5_1378_2467"><img src="main_files/2467_002.png" style="left: 154px; top: 328px; width: 512px; height: 512px; visibility: visible;" class="layerTile" id="map_layer0_tile_5_1379_2467"><img src="main_files/2468_002.png" style="left: 666px; top: -184px; width: 512px; height: 512px; visibility: visible;" class="layerTile" id="map_layer0_tile_5_1378_2468"><img src="main_files/2468.png" style="left: 666px; top: 328px; width: 512px; height: 512px; visibility: visible;" class="layerTile" id="map_layer0_tile_5_1379_2468"><img src="main_files/2469.png" style="left: 1178px; top: -184px; width: 512px; height: 512px; visibility: visible;" class="layerTile" id="map_layer0_tile_5_1378_2469"><img src="main_files/2469_002.png" style="left: 1178px; top: 328px; width: 512px; height: 512px; visibility: visible;" class="layerTile" id="map_layer0_tile_5_1379_2469"></div><div id="map_layer1" style="position: absolute; left: -1px; top: -48px; width: 1261px; height: 691px; overflow: visible; display: none; z-index: 1;"></div><svg id="map_gc" style="overflow: visible; position: absolute; z-index: 20;" height="691" width="1261"><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="improve_area_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="other_area_improvement_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="greenspace_place_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="outdoor_route_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="new_route_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="other_route_improvement_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="store_route_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="school_route_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="daycare_route_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="work_study_route_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="route_to_hobby_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="other_service_route_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="pos_aesthetic_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="pos_social_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="pos_activity_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="pos_atmosphere_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="neg_aesthetic_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="neg_social_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="neg_activity_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="neg_atmosphere_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="preserve_point_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="improve_point_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="remove_object_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="new_building_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="other_place_improvement_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="store_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="foodstore_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="specialstore_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="school_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="school_or_daycare_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="daycare_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="work_study_place_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="hobby_place_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="culture_place_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="other_service_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="home_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="center_of_vaasa_layer"></g><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="new_ser_act_layer"></g><defs></defs><g style="display: block;" transform="matrix(1, 0, 0, 1, -1, -48)" id="map_graphics_layer"></g></svg></div></div><div style="display: none; z-index: 40; left: 419px; top: 228px;" widgetid="map_infowindow" title="" id="map_infowindow" class="infowindow" dojoattachpoint="_infowindow"><div style="position:relative;"><div style="left: 6px; top: 43px;" class="window" dojoattachpoint="_window"><div class="top"><div style="height: 390px; margin-left: 250px;" class="left" dojoattachpoint="_topleft"><div class="sprite"></div></div><div style="width: 250px; height: 390px;" class="right" dojoattachpoint="_topright"><div class="sprite"></div><div style="width: 242px;" class="user" dojoattachpoint="_user"><div class="titlebar" dojoattachpoint="_titlebar"><a style="margin-left: 228px;" class="hide" dojoattachpoint="_hide" dojoattachevent="onclick:hide"><div class="sprite"></div></a><div style="width: 225px;" class="title" dojoattachpoint="_title">Kauppamatka</div></div><div class="border" dojoattachpoint="_border"></div><div style="height: 353px;" class="layout content" dojoattachpoint="_content, containerNode"><form widgetid="info_form" id="info_form" method="get" action="" dojoattachpoint="containerNode" dojoattachevent="onreset:_onReset,onsubmit:_onSubmit" name="info"><p>Miten pääasiallisesti kuljet reittiä?</p><p><div widgetid="dijit_form_CheckBox_5" role="presentation" class="dijit dijitReset dijitInline dijitCheckBox" wairole="presentation"><input style="-moz-user-select: none;" aria-pressed="false" tabindex="0" id="dijit_form_CheckBox_5" value="walk" name="route_type" class="dijitReset dijitCheckBoxInput" dojoattachpoint="focusNode" dojoattachevent="onclick:_onClick" type="checkbox"></div><label for="walk">Kävellen</label></p><p><div widgetid="dijit_form_CheckBox_6" role="presentation" class="dijit dijitReset dijitInline dijitCheckBox" wairole="presentation"><input style="-moz-user-select: none;" aria-pressed="false" tabindex="0" id="dijit_form_CheckBox_6" value="bicycle" name="route_type" class="dijitReset dijitCheckBoxInput" dojoattachpoint="focusNode" dojoattachevent="onclick:_onClick" type="checkbox"></div><label for="bicycle">Pyörällä</label></p><p><div widgetid="dijit_form_CheckBox_7" role="presentation" class="dijit dijitReset dijitInline dijitCheckBox" wairole="presentation"><input style="-moz-user-select: none;" aria-pressed="false" tabindex="0" id="dijit_form_CheckBox_7" value="car" name="route_type" class="dijitReset dijitCheckBoxInput" dojoattachpoint="focusNode" dojoattachevent="onclick:_onClick" type="checkbox"></div><label for="car">Autolla</label></p><p><div widgetid="dijit_form_CheckBox_8" role="presentation" class="dijit dijitReset dijitInline dijitCheckBox" wairole="presentation"><input style="-moz-user-select: none;" aria-pressed="false" tabindex="0" id="dijit_form_CheckBox_8" value="public_transport" name="route_type" class="dijitReset dijitCheckBoxInput" dojoattachpoint="focusNode" dojoattachevent="onclick:_onClick" type="checkbox"></div><label for="public_transport">Julkisilla</label></p><p>Muuten, miten?</p><div widgetid="dijit_form_TextBox_1" role="presentation" class="dijit dijitReset dijitInline dijitLeft dijitTextBox" id="widget_dijit_form_TextBox_1" wairole="presentation"><div class="dijitReset dijitInputField dijitInputContainer"><input tabindex="0" id="dijit_form_TextBox_1" class="dijitReset dijitInputInner" dojoattachpoint="textbox,focusNode" autocomplete="off" name="other" type="text"></div></div><p>Onko reitti?</p><div class="slider_values"><span class="left">Epämiellyttävä</span><span class="right">Miellyttävä</span></div><table widgetid="dijit_form_HorizontalSlider_0" style="width: 100%;" id="dijit_form_HorizontalSlider_0" class="dijit dijitReset dijitSliderH dijitSlider" rules="none" dojoattachevent="onkeypress:_onKeyPress,onkeyup:_onKeyUp" border="0" cellpadding="0" cellspacing="0"><tbody><tr class="dijitReset"><td class="dijitReset" colspan="2"></td><td dojoattachpoint="topDecoration" class="dijitReset dijitSliderDecoration dijitSliderDecorationT dijitSliderDecorationH"></td><td class="dijitReset" colspan="2"></td></tr><tr class="dijitReset"><td class="dijitReset dijitSliderButtonContainer dijitSliderButtonContainerH"><div class="dijitSliderDecrementIconH" tabindex="-1" style="" dojoattachpoint="decrementButton"><span class="dijitSliderButtonInner">-</span></div></td><td class="dijitReset"><div class="dijitSliderBar dijitSliderBumper dijitSliderBumperH dijitSliderLeftBumper" dojoattachevent="onmousedown:_onClkDecBumper"></div></td><td class="dijitReset"><input value="50.123" dojoattachpoint="valueNode" name="info_slider" type="hidden"><div role="presentation" class="dijitReset dijitSliderBarContainerH" wairole="presentation" dojoattachpoint="sliderBarContainer"><div style="width: 50.123%;" role="presentation" wairole="presentation" dojoattachpoint="progressBar" class="dijitSliderBar dijitSliderBarH dijitSliderProgressBar dijitSliderProgressBarH" dojoattachevent="onmousedown:_onBarClick"><div class="dijitSliderMoveable dijitSliderMoveableH"><div aria-valuemax="100" aria-valuemin="0" tabindex="0" aria-valuenow="50.123" role="slider" dojoattachpoint="sliderHandle,focusNode" class="dijitSliderImageHandle dijitSliderImageHandleH" dojoattachevent="onmousedown:_onHandleClick" wairole="slider" valuemin="0" valuemax="100"></div></div></div><div style="width: 49.877%;" role="presentation" wairole="presentation" dojoattachpoint="remainingBar" class="dijitSliderBar dijitSliderBarH dijitSliderRemainingBar dijitSliderRemainingBarH" dojoattachevent="onmousedown:_onBarClick"></div></div></td><td class="dijitReset"><div class="dijitSliderBar dijitSliderBumper dijitSliderBumperH dijitSliderRightBumper" dojoattachevent="onmousedown:_onClkIncBumper"></div></td><td class="dijitReset dijitSliderButtonContainer dijitSliderButtonContainerH"><div class="dijitSliderIncrementIconH" tabindex="-1" style="" dojoattachpoint="incrementButton"><span class="dijitSliderButtonInner">+</span></div></td></tr><tr class="dijitReset"><td class="dijitReset" colspan="2"></td><td dojoattachpoint="containerNode,bottomDecoration" class="dijitReset dijitSliderDecoration dijitSliderDecorationB dijitSliderDecorationH"></td><td class="dijitReset" colspan="2"></td></tr></tbody></table><p>Kerro lisää!</p><textarea class="dijitTextBox dijitTextArea" value="" widgetid="dijit_form_SimpleTextarea_0" style="width: auto;" tabindex="0" id="dijit_form_SimpleTextarea_0" cols="18" rows="5" name="comments" dojoattachpoint="focusNode,containerNode,textbox" autocomplete="off"></textarea><div class="center"><div class="button" onmousedown='categories.store_route.getInfoValues("info_form", -1);map.infoWindow.hide()'><span class="left-border"></span><span class="text">Tallenna kohde</span><span class="right-border"></span></div><div class="remove" onmousedown="categories.store_route.removeGraphic(-1);map.infoWindow.hide()">Poista kohde</div></div><!-- center --></form></div></div></div><div class="bottom"><div style="margin-left: 250px; margin-top: 390px;" class="left" dojoattachpoint="_bottomleft"><div class="sprite"></div></div><div style="width: 245px; margin-top: 390px;" class="right" dojoattachpoint="_bottomright"><div class="sprite"></div></div></div></div></div><div class="pointer lowerright" dojoattachpoint="_pointer"><div dojoattachpoint="_sprite" class="sprite"></div></div></div></div><div class="logo-med" style="z-index: 30;"></div><table widgetid="map_zoom_slider" style="position: absolute; left: 30px; top: 30px; height: 200px; z-index: 30;" id="map_zoom_slider" class="dijit dijitReset dijitSlider dijitSliderV" rules="none" dojoattachevent="onkeypress:_onKeyPress,onkeyup:_onKeyUp" border="0" cellpadding="0" cellspacing="0"><tbody><tr class="dijitReset"><td class="dijitReset"></td><td class="dijitReset dijitSliderButtonContainer dijitSliderButtonContainerV"><div class="dijitSliderIncrementIconV" tabindex="-1" style="outline: medium none;" dojoattachpoint="decrementButton"><span class="dijitSliderButtonInner">+</span></div></td><td class="dijitReset"></td></tr><tr class="dijitReset"><td class="dijitReset"></td><td class="dijitReset"><center><div class="dijitSliderBar dijitSliderBumper dijitSliderBumperV dijitSliderTopBumper" dojoattachevent="onmousedown:_onClkIncBumper"></div></center></td><td class="dijitReset"></td></tr><tr class="dijitReset"><td dojoattachpoint="leftDecoration" class="dijitReset dijitSliderDecoration dijitSliderDecorationL dijitSliderDecorationV"></td><td class="dijitReset" style="height: 100%;"><input value="5" dojoattachpoint="valueNode" type="hidden"><center role="presentation" class="dijitReset dijitSliderBarContainerV" wairole="presentation" dojoattachpoint="sliderBarContainer"><div style="height: 37.5%;" role="presentation" wairole="presentation" dojoattachpoint="remainingBar" class="dijitSliderBar dijitSliderBarV dijitSliderRemainingBar dijitSliderRemainingBarV" dojoattachevent="onmousedown:_onBarClick"><!--#5629--></div><div style="height: 62.5%;" role="presentation" wairole="presentation" dojoattachpoint="progressBar" class="dijitSliderBar dijitSliderBarV dijitSliderProgressBar dijitSliderProgressBarV" dojoattachevent="onmousedown:_onBarClick"><div class="dijitSliderMoveable dijitSliderMoveableV" style="vertical-align:top;"><div style="outline: medium none;" aria-valuemax="8" aria-valuemin="0" tabindex="0" aria-valuenow="5" role="slider" dojoattachpoint="sliderHandle,focusNode" class="dijitSliderImageHandle dijitSliderImageHandleV" dojoattachevent="onmousedown:_onHandleClick" wairole="slider" valuemin="0" valuemax="8"></div></div></div></center></td><td dojoattachpoint="containerNode,rightDecoration" class="dijitReset dijitSliderDecoration dijitSliderDecorationR dijitSliderDecorationV"><div widgetid="dijit_form_VerticalRule_0" style="width: 5px;" id="dijit_form_VerticalRule_0" class="dijitRuleContainer dijitRuleContainerV"><div class="dijitRuleMark dijitRuleMarkV" style="top:0%;"></div><div class="dijitRuleMark dijitRuleMarkV" style="top:12.5%;"></div><div class="dijitRuleMark dijitRuleMarkV" style="top:25%;"></div><div class="dijitRuleMark dijitRuleMarkV" style="top:37.5%;"></div><div class="dijitRuleMark dijitRuleMarkV" style="top:50%;"></div><div class="dijitRuleMark dijitRuleMarkV" style="top:62.5%;"></div><div class="dijitRuleMark dijitRuleMarkV" style="top:75%;"></div><div class="dijitRuleMark dijitRuleMarkV" style="top:87.5%;"></div><div class="dijitRuleMark dijitRuleMarkV" style="top:100%;"></div></div><div widgetid="dijit_form_VerticalRuleLabels_0" style="width: 2em; font-family: Verdana; font-size: 75%;" id="dijit_form_VerticalRuleLabels_0" class="dijitRuleContainer dijitRuleContainerV dijitRuleLabelsContainer dijitRuleLabelsContainerV"><div class="dijitRuleLabelContainer dijitRuleLabelContainerV" style="top:100%;"><span class="dijitRuleLabel dijitRuleLabelV"></span></div><div class="dijitRuleLabelContainer dijitRuleLabelContainerV" style="top:87.5%;"><span class="dijitRuleLabel dijitRuleLabelV"></span></div><div class="dijitRuleLabelContainer dijitRuleLabelContainerV" style="top:75%;"><span class="dijitRuleLabel dijitRuleLabelV"></span></div><div class="dijitRuleLabelContainer dijitRuleLabelContainerV" style="top:62.5%;"><span class="dijitRuleLabel dijitRuleLabelV"></span></div><div class="dijitRuleLabelContainer dijitRuleLabelContainerV" style="top:50%;"><span class="dijitRuleLabel dijitRuleLabelV"></span></div><div class="dijitRuleLabelContainer dijitRuleLabelContainerV" style="top:37.5%;"><span class="dijitRuleLabel dijitRuleLabelV"></span></div><div class="dijitRuleLabelContainer dijitRuleLabelContainerV" style="top:25%;"><span class="dijitRuleLabel dijitRuleLabelV"></span></div><div class="dijitRuleLabelContainer dijitRuleLabelContainerV" style="top:12.5%;"><span class="dijitRuleLabel dijitRuleLabelV"></span></div><div class="dijitRuleLabelContainer dijitRuleLabelContainerV" style="top:0%;"><span class="dijitRuleLabel dijitRuleLabelV"></span></div></div></td></tr><tr class="dijitReset"><td class="dijitReset"></td><td class="dijitReset"><center><div class="dijitSliderBar dijitSliderBumper dijitSliderBumperV dijitSliderBottomBumper" dojoattachevent="onmousedown:_onClkDecBumper"></div></center></td><td class="dijitReset"></td></tr><tr class="dijitReset"><td class="dijitReset"></td><td class="dijitReset dijitSliderButtonContainer dijitSliderButtonContainerV"><div class="dijitSliderDecrementIconV" tabindex="-1" style="outline: medium none;" dojoattachpoint="incrementButton"><span class="dijitSliderButtonInner">-</span></div></td><td class="dijitReset"></td></tr></tbody></table><div id="navigation_tools_background"><div id="pan_arrows"><div id="pan_up" class="fixedPanPehmo panUp" onclick="map.panUp();"></div><div id="pan_right" class="fixedPanPehmo panRight" onclick="map.panRight();"></div><div id="pan_down" class="fixedPanPehmo panDown" onclick="map.panDown();"></div><div id="pan_left" class="fixedPanPehmo panLeft" onclick="map.panLeft();"></div><div id="pan_upperRight" class="fixedPanPehmo panUpperRight" onclick="map.panUpperRight();"></div><div id="pan_lowerRight" class="fixedPanPehmo panLowerRight" onclick="map.panLowerRight();"></div><div id="pan_upperLeft" class="fixedPanPehmo panUpperLeft" onclick="map.panUpperLeft();"></div><div id="pan_lowerLeft" class="fixedPanPehmo panLowerLeft" onclick="map.panLowerLeft();"></div></div><!-- pan_arrows --></div><!-- navigation tools background --><div id="satellite_map_button" onmousedown="toggleSatelliteMap()"><div id="satellite_button_activity"><span class="left-border"></span><span class="text">Ilmakuva</span><span class="right-border"></span></div></div></div></div>
+
+
+<div id="popup" class="hidden">
+
+<div class="corner top-left"></div>
+<div class="corner top-right"></div>
+<div class="corner bottom-right"></div>
+<div class="corner bottom-left"></div>
+<div class="border top-border"></div>
+<div class="border right-border"></div>
+<div class="border bottom-border"></div>
+<div class="border left-border"></div>
+<div class="close" onmousedown="hide('popup')">Sulje X</div>
+<div id="popup-content">
+
+
+</div> <!-- popup-content -->
+</div> <!-- popup -->
+
+<script type="text/javascript">
+<!--
+var djConfig = {
+	parseOnLoad: true,
+	isDebug: true,
+	locale: 'fi'
+	};
+-->
+</script>
+
+<script type="text/javascript" src="main_files/a.js"></script>
+<!--<script type="text/javascript" src="https://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.1"></script>-->
+
+
+
+<script type="text/javascript" src="main_files/pehmogis.js"></script>
+<script type="text/javascript" src="main_files/info.js"></script>
+<script type="text/javascript" src="main_files/jquery.js"></script>
+<script type="text/javascript" src="main_files/geonition.js"></script>
+
+<!-- IE6 update -->
+<!--[if IE 6]>
+<script type="text/javascript">
+    /*Load jQuery if not already loaded*/ if(typeof jQuery == 'undefined'){ document.write("<script type=\"text/javascript\"   src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></"+"script>"); var __noconflict = true; }
+    var IE6UPDATE_OPTIONS = {
+        icons_path: "/static/ie6update/images/"
+    }
+</script>
+<script type="text/javascript" src="/static/ie6update/ie6update.js"></script>
+<![endif]-->
+
+
+
+<script type="text/javascript">
+<!--
+dojo.addOnLoad(init);
+-->
+</script>
+
+<script type="text/javascript">
+<!--
+document.body.style.cursor = "default";
+-->
+</script>
+
+
+
+</body></html>

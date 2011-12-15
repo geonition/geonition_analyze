@@ -1,0 +1,100 @@
+<div class="query_elements">
+    <span class="string query_pair">
+        <select name="query_condition">
+            <option value="contains">contains</option>
+            <option value="equals">equals</option>
+        </select>
+    
+        <input type="text" name="query_value" />
+    </span>
+    
+    <span class="number query_pair">
+        <select name="query_condition">
+            <option value="=">is</option>
+            <option value="<=">is less than</option>
+            <option value=">=">is more than</option>
+        </select>
+    
+        <input type="number" name="query_value" value="0"/>
+    </span>
+        
+    <span class="boolean query_pair">
+        <span>is</span>
+        <input name="query_condition" type="hidden" value="=" />
+            
+        <select name="query_value">
+            <option value="true">true</option>
+            <option value="false">false</option>
+            <option value="null">null</option>
+        </select>
+    </span>
+        
+    <span class="martial_status query_pair">
+        <span>is</span>
+        <input name="query_condition" type="hidden" value="=" />
+            
+        <select name="query_value">
+            <option value="married">Married</option>
+            <option value="not_married">Not married</option>
+        </select>
+    </span>
+</div>
+
+<form name="layer_form">
+    <p>Give a name for the layer:</p>
+    <input type="text" name="layer_name" value="name of layer" />
+    <div>
+        <p>Select geometry type:</p>
+        <select name="geometry_type">
+            <option>point</option>
+            <option>polyline</option>
+            <option>polygon</option>
+        </select>
+    </div>
+    <p>
+        Choose properties for the geographical features to be added to the
+        layer
+    </p>
+    <fieldset class="geography">
+        <div class="row">
+            <select name="query_key" class="query_key">
+                <option class="empty" value="" selected="selected">
+                </option>
+                <option class="boolean" value="beautiful_place">
+                    Beautiful place
+                </option>
+                <option class="boolean" value="ugly_place">
+                    Ugly place
+                </option>
+            </select>
+        </div>
+    </fieldset>
+    <div class="add_query geography">
+        <span class="ui-icon ui-icon-circle-plus"></span>
+        <span>Add property</span>
+    </div>
+    
+    <p>
+        Choose properties for the users whos geographical features should be
+        added to the layer
+    </p>
+    <fieldset class="profile">
+        <div class="row">
+            <select name="query_key" class="query_key">
+                <option class="empty" value="" selected="selected">
+                </option>
+                <option class="number" value="age">
+                    Age
+                </option>
+                <option class="martial_status" value="martial_status">
+                    Martial status
+                </option>
+            </select>
+        </div>
+    </fieldset>
+    <div class="add_query profile">
+        <span class="ui-icon ui-icon-circle-plus"></span>
+        <span>Add property</span>
+    </div>
+        
+</form>

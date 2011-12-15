@@ -1,0 +1,1447 @@
+
+/*
+small not supposed to be general and global
+*/
+form#login {
+position: relative;
+}
+
+div.login {
+position: relative;
+}
+
+div.fields {
+position: relative;
+width: 205px;
+height: 55px;
+}
+
+div.hint {
+position: relative;
+left: 6px;
+font-weight: bold;
+color: gray;
+cursor: text;
+bottom: 20px;
+}
+
+#login-username {
+position: relative;
+height: 22px;
+}
+
+#login-password {
+position: relative;
+height: 22px;
+}
+
+div.register {
+position: relative;
+}
+
+div.newpassword {
+position: relative;
+color: gray;
+cursor: pointer;
+}
+div.newpassword:hover {
+color: black;
+}
+
+.link {
+cursor: pointer;
+}
+.welcome .text {
+margin-top: 4px;
+}
+
+table.service-table {
+position:relative;
+}
+
+/*
+background form page
+*/
+
+tr.empty {
+height: 10px;
+}
+table.change_profile {
+    width: 100%;
+}
+
+/* registration page */
+div.note {
+position: relative;
+left: 50px;
+font-weight: bold;
+font-size: 12px;
+}
+
+div#popup span.link{
+color: #C0410F;
+font-weight: bold;
+}
+
+div#popup td.value {
+padding: 7px 0px 0px 0px;
+font-size: 14px;
+}
+div#popup td.note {
+font-size: 13px;
+}
+
+/*welcome page*/
+div#popup .header {
+position: relative;
+height: 50px;
+padding: 20px 20px 10px 20px;
+}
+
+div#popup .header h1 { 
+color: #C0410F;
+font-size: 23px;
+font-style: italic;
+font-weight: 600;
+}
+
+div#popup .content {
+position: relative;
+width: 420px;
+margin-right: 20px;
+padding: 0px 0px 0px 30px;
+}
+
+div#popup p.text {
+font-size: 13px;
+}
+
+div#popup p.text  .link{
+color: #C0410F;
+font-weight: bold;
+}
+
+div#popup .text-box {
+position: relative;
+width: 370px;
+margin: 20px 10px 20px 10px;
+}
+
+div#popup .text-box_left-border {
+background-image: url("../images/text-box-left-border.png");
+background-repeat: no-repeat;
+width: 10px;
+height: 140px;
+position: absolute;
+left: -10px;
+}
+div#popup .text-box_right-border {
+background-image: url("../images/text-box-right-border.png");
+background-repeat: no-repeat;
+width: 10px;
+height: 140px;
+position: absolute;
+left: 100%;
+}
+div#popup .text-box .text-box-content {
+background-image: url("../images/text-box-bg.png");
+background-repeat: repeat-x;
+position: relative;
+padding-top:1px;
+}
+
+div#popup .text-box .register-button {
+margin: 20px 30px 10px 30px;
+}
+
+div#popup .text-box p {
+padding: 0px 20px 0px 20px;
+}
+
+div#popup .text-box span.link {
+position: relative;
+color: #C0410F;
+font-weight: bold;
+left: 40px;
+}
+
+div#popup .news {
+position: absolute;
+right: 0px;
+top: 80px;
+width: 220px;
+border-left: 1px solid #C4C2C2;
+padding-left: 20px;
+}
+
+div#popup .news {
+font-size: 12px;
+}
+
+div#popup .news .date {
+color: #D4D5D6;
+font-weight: bold;
+font-size: 10px;
+}
+
+div#popup .news .story {
+background-image: url("../images/news-icon.gif");
+background-repeat: no-repeat;
+padding-left: 25px;
+padding-bottom: 10px;
+}
+
+div#popup .news h2 {
+font-size: 13px;
+font-weight: bold;
+}
+
+/*
+profile section
+*/
+#user-profile .subsection .ficon {
+position: relative;
+width: 11px;
+height: 11px;
+background-repeat: no-repeat;
+top: 15px;
+left: 6px;
+}
+#user-profile .subsection .ficon.open {
+background-image: url("../images/minus_blue.png");
+background-position: 0 0;
+}
+#user-profile .subsection .ficon.closed {
+background-image: url("../images/plus_sininen.png");
+}
+#user-profile .subsection .text {
+position: relative;
+left: 20px;
+color: #29C6E3;
+font-weight: bold;
+border-bottom: 1px solid #29C6E3;
+padding-bottom: 3px;
+}
+#user-profile .subsection .text {
+position: relative;
+left: 20px;
+width: 400px;
+}
+
+/* official and global css begins */
+
+html {
+font-family: Calibri, Helvetica, sans-serif;
+}
+
+body {
+height: 100%;
+}
+
+/* Graphics on the map */
+g image {
+opacity: 0.8;
+}
+g image:hover {
+opacity: 1;
+}
+g path {
+opacity: 0.7;
+}
+g path:hover {
+opacity: 1;
+}
+
+/* The displacement of the graphics put on the map */
+g#home_layer {
+position: relative;
+top: -50px;
+}
+
+/* Graphics end */
+
+.center {
+text-align: center;
+width: 100%;
+}
+#left {
+position: absolute;
+width: 295px;
+left: 0px;
+z-index: 10;
+height: 100%;
+background-image: url("../images/vasen-tausta.gif");
+background-repeat: repeat-y;
+}
+
+#left-bg {
+position: fixed;
+/*top: 300px;*/
+background-image: url("../images/vasen-tausta.gif");
+background-repeat: repeat-y;
+height: 100%;
+width: 295px;
+}
+
+#map {
+position: fixed;
+width: 100%;
+height: 100%;
+left: 295px;
+top: 0px;
+z-index: 1;
+}
+
+#pehmogis_logo {
+position: relative;
+background-image: url("../images/logo.png");
+width: 82px;
+height: 22px;
+top: 17px;
+left: 10px;
+}
+
+#languages {
+position: absolute;
+right: 10px;
+top: 0px;
+z-index: 99;
+}
+
+#header {
+position: relative;
+top: 0px;
+left: 10px;
+}
+
+#header h1 b {
+color: #C0410F;
+font-size: 23px;
+}
+
+#header h1 i {
+font-size: 20px;
+}
+
+#intro {
+position: relative;
+top: 20px;
+left: 20px;
+}
+
+#backlink {
+position: relative;
+left: 10px;
+color: gray;
+font-weight: bold;
+cursor: pointer;
+margin: 2px;
+margin-top: 10px;
+}
+#backlink:hover {
+color: black;
+}
+
+.warning_text {
+position: relative;
+color: red;
+padding: 4px;
+margin: 4px;
+}
+.run-in-text {
+font-weight: bold;
+}
+
+/*
+sections global
+*/
+.section {
+position: relative;
+top: 25px;	
+background-repeat: no-repeat;
+}
+.section.compact {
+top: 0px;
+}
+.section .content {
+background-color: white;
+width: 335px;
+white-space: normal;
+margin-left: 6px;
+position: relative;
+}
+.section .open .footer {
+}
+.section .closed  {
+background-image: url("../images/section-closed.png");
+background-repeat: no-repeat;
+width: 307px;
+height: 71px;
+}
+.section .open  {
+background-image: url("../images/section-header-sprite.png");
+background-repeat: repeat-x;
+width: 341px;
+height: 45px;
+}
+.section .footer {
+background-image: url("../images/section-footer-sprite.png");
+background-repeat: repeat-x;
+height: 9px;
+width: 341px;
+}
+.section .green .closed {
+background-position: 0px -141px;
+/*height: 71px;*/
+}
+.section .compact .green .closed {
+height: 45px;
+}
+.section .green .open {
+background-position: 0px -135px;
+/*height: 45px;*/
+}
+.section .green .footer {
+background-position: 0px -27px;
+height: 9px;
+}
+.section .orange {
+position: relative;
+bottom: 10px;
+}
+.section .orange .closed {
+background-position: 0px -212px;
+height: 72px;
+}
+.section .compact .orange .closed {
+height: 45px;
+}
+.section .orange .open {
+background-position: 0px -180px;
+height: 45px;
+}
+.section .orange .footer {
+background-position: 0px -36px;
+height: 9px;
+}
+.section .purple {
+position: relative;
+bottom: 20px;
+}
+.section .purple .closed {
+background-position: 0px -282px;
+height: 71px;
+}
+.section .compact .purple .closed {
+height: 45px;
+}
+.section .purple .open {
+background-position: 0px -90px;
+height: 45px;
+}
+.section .purple .footer {
+background-position: 0px -18px;
+height: 9px;
+}
+.section .blue {
+position: relative;
+bottom: 30px;
+}
+.section .blue .closed {
+background-position: 0px -71px;
+height: 71px;
+}
+.section .compact .blue .closed {
+height: 45px;
+}
+.section .blue .open {
+background-position: 0px 0px;
+height: 45px;
+}
+.section .blue .footer {
+background-position: 0px 0px;
+height: 9px;
+}
+.section .turquoise {
+position: relative;
+bottom: 40px;
+}
+.section .turquoise .closed {
+background-position: 0px 0px;
+height: 71px;
+}
+.section .compact .turquoise .closed {
+height: 45px;
+}
+.section .turquoise .open {
+background-position: 0px -45px;
+height: 44px;
+}
+.section .turquoise .footer {
+background-position: 0px -9px;
+height: 9px;
+}
+.section .closed .icon {
+position: relative;
+top: 20px;
+left: 15px;
+width: 28px;
+height: 30px;
+background-repeat: no-repeat;
+}
+.section .compact .closed .icon {
+display: none;
+}
+.section .icon_picture {
+    position: relative;
+background-image: url("../images/section-ikonit-sprite.png");
+}
+.section .bubbleicon {
+background-position: 0px -71px;
+top: 4px;
+left: 0px;
+height: 21px;
+width: 25px;
+}
+.section .shovel {
+background-position: 0px -41px;
+left: 0px;
+height: 30px;
+width: 29px;
+}
+.section .pointinghand {
+background-position: 0px -22px;
+top: 5px;
+left: 0px;
+width: 28px;
+height: 19px;
+}
+.section .person_map_icon {
+background-position: 0px -93px;
+top: 4px;
+left: 0px;
+height: 21px;
+width: 22px;
+}
+.section .person {
+background-position: 0px 0px;
+top: 4px;
+left: 0px;
+width: 16px;
+height: 22px;
+}
+.section .closed .category {
+position: absolute;
+left: 50px;
+top: 25px;
+color: white;
+font-weight: bold;
+width: 290px;
+}
+.section .header .hover_effect:hover {
+opacity: 0.7;
+}
+.section .compact .closed .category {
+top: 15px;
+}
+.section .closed .description{
+display: none;
+}
+.section .open .description {
+position: relative;
+/*left: 10px;
+top: 4px;*/
+left: 50px;
+top: 15px;
+color: white;
+font-weight: bold;
+}
+.section .open .category {
+display: none;
+}
+
+/*
+Sections not global
+*/
+#services .open {
+width: 515px;
+}
+#services .content {
+width: 509px;
+}
+#services .footer {
+width: 514px;
+}
+#user-profile .open {
+width: 436px;
+}
+#user-profile .content {
+width: 430px;
+}
+#user-profile .footer {
+width: 436px;
+}
+#about_environment .category {
+    top: 25px;
+}
+.compact #about_environment .closed .category {
+    top: 15px;
+}
+/*
+general links under sections
+*/
+
+.general {
+position: relative;
+top: 0px;
+}
+.general.compact {
+top: -25px;
+}
+.general .link {
+height: auto;
+margin-bottom: 8px;
+text-align: center;
+}
+.general .icon {
+width: 18px;	
+/*height: 100%;*/
+margin-right: 1px;
+display: inline-block;
+}
+
+.general .kiikarit .icon_picture {
+background-image: url("../images/kiikarit.png");
+background-repeat: no-repeat;
+display: inline-block;
+vertical-align: middle;
+width: 17px;
+height: 17px;
+}
+
+.general .idea .icon_picture {
+background-image: url("../images/lamppu_punainen.png");
+background-repeat: no-repeat;
+display: inline-block;
+vertical-align: middle;
+width: 18px;
+height: 22px;
+}
+
+.general .gram .icon_picture {
+background-image: url("../images/gram.png");
+background-repeat: no-repeat;
+display: inline-block;
+vertical-align: middle;
+width: 15px;
+height: 14px;
+}
+
+.general .point .icon_picture {
+background-image: url("../images/punainen_piste.png");
+background-repeat: no-repeat;
+display: inline-block;
+vertical-align: middle;
+width: 10px;
+height: 10px;
+}
+
+
+.general .name {
+display: inline-block;
+vertical-align: middle;
+/*height: 100%;*/
+width: 245px;
+text-align: left;
+color: #505050;
+}
+.general .name:hover {
+color: black;
+}
+.general a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+
+/* popup */
+div#popup {
+position: absolute;
+width: 680px;
+left: 50%;
+margin-left: -190px;
+top: 70px;
+height: auto;
+background-color: white;
+z-index: 20;
+}
+
+div#popup .corner {
+position: absolute;
+width: 11px;
+height: 11px;
+background-repeat: no-repeat;
+}
+
+div#popup .top-left {
+top: -11px;
+left: -11px;
+background-image: url("../images/top-left-corner.png");
+}
+div#popup .top-right {
+top: -11px;
+right: -11px;
+background-image: url("../images/top-right-corner.png");
+}
+div#popup .bottom-right {
+bottom: -11px;
+right: -11px;
+background-image: url("../images/bottom-right-corner.png");
+}
+div#popup .bottom-left {
+bottom: -11px;
+left: -11px;
+background-image: url("../images/bottom-left-corner.png");
+}
+div#popup .border {
+position: absolute;
+}
+div#popup .border.top-border {
+background-image: url("../images/top-border.png");
+background-repeat: repeat-x;
+top: -11px;
+width: 100%;
+height: 11px;
+}
+div#popup .border.right-border {
+background-image: url("../images/right-border.png");
+background-repeat: repeat-y;
+right: -11px;
+height: 100%;
+width: 11px;
+}
+div#popup .border.bottom-border {
+background-image: url("../images/bottom-border.png");
+background-repeat: repeat-x;
+bottom: -11px;
+width: 100%;
+height: 11px;
+}
+div#popup .border.left-border {
+background-image: url("../images/left-border.png");
+background-repeat: repeat-y;
+left: -11px;
+height: 100%;
+width: 11px;
+}
+div#popup .close {
+position: absolute;
+top: 0px;
+right: 0px;
+color: #505050;
+cursor: pointer;
+z-index: 21;
+}
+div#popup .close:hover {
+color: black;
+}
+
+/* general */
+.hidden {
+visibility: hidden;
+display: none;
+height: 0px;
+}
+
+.visible {
+visibility: inherit;
+}
+
+/* content */
+#users-map div.content  > * {
+margin: 0px 10px;
+}
+#users-map div.content p {
+padding-bottom:5px;
+padding-top:5px;
+}
+
+/* buttons */
+.buttons {
+    padding: 5px;
+    text-align: center;
+    }
+
+/* Infowindow buttonarea */
+.infobutton_area {
+	text-align: center;
+	}
+	
+/* general red button */
+.button {
+display: inline-block;
+height: 23px;
+background-image: url("../images/red-button-middle.png");
+background-repeat: repeat-x;
+overflow: visible;
+cursor: pointer;
+width: 179px;
+white-space: nowrap;
+margin-left: 7px;
+margin-right: 14px;
+margin-top: 2px;
+color: white;
+}
+.button .left-border {
+display: inline-block;
+position: relative;
+height: 23px;
+width: 7px;
+right: 7px;
+background-image: url("../images/red-button-left.png");
+background-repeat: no-repeat;
+}
+.button .text {
+display: inline-block;
+position: relative;
+bottom: 6px;
+width: 150px;
+text-align: center;
+}
+.button .text:hover {
+opacity: 0.7;
+}
+.button .right-border-w-arrow {
+display: inline-block;
+position: relative;
+height: 23px;
+width: 14px;
+left: 14px;
+/*right: 8px;*/
+background-image: url("../images/red-button-right-w-arrow.png");
+background-repeat: no-repeat;
+}
+.button .right-border {
+display: inline-block;
+position: relative;
+height: 23px;
+width: 14px;
+left: 10px;
+/*right: 8px;*/
+background-image: url("../images/red-button-right.png");
+background-repeat: no-repeat;
+background-position: 4px 0;
+}
+/* general red button, made by html <button> */
+button.button {
+display: inline-block;
+height: 23px;
+background-image: url("../images/red-button-middle.png");
+background-repeat: repeat-x;
+overflow: visible;
+cursor: pointer;
+width: 179px;
+white-space: nowrap;
+margin-left: 7px;
+margin-right: 14px;
+margin-top: 2px;
+border: 0px;
+color: white;
+outline: none;
+}
+button.button .left-border {
+display: inline-block;
+position: relative;
+height: 23px;
+width: 7px;
+right: 9px;
+bottom: 1px;
+background-image: url("../images/red-button-left.png");
+background-repeat: no-repeat;
+}
+button.button .text {
+display: inline-block;
+position: relative;
+/*color: white;*/
+bottom: 7px;
+width: 150px;
+text-align: center;
+}
+button.button:hover {
+color: #eecccc;
+}
+button.button .right-border-w-arrow {
+display: inline-block;
+position: relative;
+height: 23px;
+width: 14px;
+left: 8px;
+bottom: 1px;
+/*right: 8px;*/
+background-image: url("../images/red-button-right-w-arrow.png");
+background-repeat: no-repeat;
+}
+button.button .right-border {
+display: inline-block;
+position: relative;
+height: 23px;
+width: 14px;
+left: 10px;
+bottom: 1px;
+/*right: 8px;*/
+background-image: url("../images/red-button-right.png");
+background-repeat: no-repeat;
+background-position: 4px 0;
+}
+
+/*I am not sure why it looks different in the infowindow*/
+.infowindow .button .right-border {
+left: 14px;
+}
+
+div#popup .button .right-border {
+    background-position: 0 0;
+}
+.button input {
+position: absolute;
+height: 100%;
+width: 100%;
+background: transparent;
+outline: none;
+}
+
+/* positive negative button */
+.pos-neg-button {
+position: relative;
+width: 300px;
+}
+.pos-button, .neg-button {
+position: relative;
+display: inline-block;
+cursor: pointer;
+height: 29px;
+background-image: url("../images/pos-neg-button-middle_new.png");
+background-repeat: repeat-x;
+white-space: nowrap;
+opacity: 0.8;
+}
+.pos-button:hover, .neg-button:hover {
+opacity: 1;
+}
+.pos-button {
+left: 2px;
+border-right: 1px solid gray;
+}
+.neg-button {
+right: 2px;
+border-left: 1px solid gray;
+}
+.pos-button.active, .neg-button.active, .pos-button.active .left, .neg-button.active .right {
+/*border: 2px inset #04AC14;*/
+background-position: 0 -29px;
+}
+.pos-button .left {
+display: inline-block;
+position: relative;
+background-image: url("../images/pos-neg-button-left_new.png");
+background-repeat: no-repeat;
+width: 33px;
+height: 29px;
+}
+.pos-button .text {
+display: inline-block;
+position: relative;
+height: 29px;
+font-weight: bold;
+padding-right: 5px;
+bottom: 7px;
+color: #61A800;
+}
+.pos-button:hover .text {
+color: #6DBD00;
+}
+.neg-button .text {
+display: inline-block;
+position: relative;
+height: 29px;
+font-weight: bold;
+padding-left: 5px;
+bottom: 7px;
+color: #D1533A;
+}
+.neg-button:hover .text {
+color: #D9563C;
+}
+.neg-button .right {
+display: inline-block;
+position: relative;
+background-image: url("../images/pos-neg-button-right_new.png");
+background-repeat: no-repeat;
+width: 32px;
+height: 29px;
+}
+
+/* big buttons */
+.button_container {
+position: relative;
+text-align: center;
+}
+.big_button {
+position: relative;
+display: inline-block;
+cursor: pointer;
+height: 46px;
+left: 10px;
+background-image: url("../images/big-button-middle_new.png");
+background-repeat: repeat-x;
+border: 2px solid white;
+white-space: nowrap;
+width: 219px;
+margin-left: 46px;
+margin-right: 46px;
+}
+.big_button.active, .big_button.active .left, .big_button.active .right{
+/*border: 2px inset #04AC14;*/
+background-position: 0px -46px;
+}
+.big_button .text {
+display: inline-block;
+position: relative;
+height: 46px;
+color: #555555;
+font-weight: bold;
+padding-right: 5px;
+bottom: 17px;
+width: 160px;
+left: -48px;
+}
+.big_button .left {
+display: inline-block;
+position: relative;
+background-image: url("../images/big-button-left_new.png");
+background-repeat: no-repeat;
+width: 46px;
+height: 46px;
+right: 46px;
+}
+.big_button .right {
+display: inline-block;
+position: relative;
+background-image: url("../images/big-button-right_new.png");
+background-repeat: no-repeat;
+width: 46px;
+height: 46px;
+/*left: 46px;*/
+}
+/*
+#preserve_point .left {
+background-image: url("../images/sailytettava-button-left.png");
+}
+#preserve_point .right {
+background-image: url("../images/sailytettava-button-right.png");
+}
+*/
+/* 
+end of big buttons css 
+*/
+/*
+Small buttonit
+*/
+.small_button { 
+display: inline-block;
+cursor: pointer;
+height: 29px;
+background-image: url("../images/small-buttons-sprite.png");
+background-position: 0px -29px;
+background-repeat: repeat-x;
+overflow: visible;
+white-space: nowrap;
+width: 195px;
+margin-left: 30px;
+margin-right: 29px;
+position: relative;
+opacity: 0.7;
+color: #101010;
+}
+.small_button:hover, .small_button:hover > .small_button .text {
+opacity: 1;
+color: #656565;
+}
+.small_button.active {
+opacity: 1;
+color: #656565;
+}
+.small_button .text {
+display: inline-block;
+position: relative;
+font-weight: bold;
+font-size: 12px;
+bottom: 7px;
+width: 157px;
+right: 30px;
+text-align: center;
+}
+.small_button .left {
+display: inline-block;
+position: relative;
+background-repeat: no-repeat;
+background-image: url("../images/small-buttons-sprite.png");
+width: 30px;
+height: 29px;
+right: 30px;
+}
+.small_button .right {
+display: inline-block;
+position: relative;
+background-repeat: no-repeat;
+background-image: url("../images/small-buttons-sprite.png");
+background-position: 0px -58px;
+width: 29px;
+height: 29px;
+}
+.small_button .marker {
+display: inline-block;
+position: relative;
+background-repeat: no-repeat;
+background-position: 0px 0px;
+}
+.small_button .marker.point {
+width: 15px;
+height: 21px;
+bottom: 4px;
+right: 30px;
+}
+.small_button .marker.area {
+width: 22px;
+height: 16px;
+bottom: 6px;
+right: 35px;
+}
+.small_button .marker.route {
+width: 16px;
+height: 18px;
+bottom: 5px;
+right: 32px;
+}
+.turquoise .small_button .marker.point {
+    background-image: url("../images/pieni_neula073193215.png");
+}
+.orange .small_button .marker.point {
+    background-image: url("../images/pieni_neula217110010.png");
+}
+.orange .small_button .marker.area {
+    background-image: url("../images/pieni_alue217110010.png");
+}
+.orange .small_button .marker.route {
+    background-image: url("../images/pieni_reitti217110010.png");
+}
+.orange .small_button.active .left {
+background-position: 0px -87px;
+}
+.orange .small_button.active {
+background-position: 0px -116px;
+}
+.orange .small_button.active .right {
+background-position: 0px -145px;
+}
+.purple .small_button.active .left {
+background-position: 0px -174px;
+}
+.purple .small_button.active {
+background-position: 0px -203px;
+}
+.purple .small_button.active .right {
+background-position: 0px -232px;
+}
+.purple .small_button .marker.point {
+    background-image: url("../images/pieni_neula172073136.png");
+}
+.purple .small_button .marker.area {
+    background-image: url("../images/pieni_alue172073136.png");
+}
+.purple .small_button .marker.route {
+    background-image: url("../images/pieni_reitti172073136.png");
+}
+/*
+.green .small_button .marker.point {
+    background-image: url("../images/pieni_neula083174071.png");
+}
+*/
+.small_button .marker.area.green  {
+    background-image: url("../images/pieni_alue083174071.png");
+}
+.small_button .marker.route.green {
+    background-image: url("../images/pieni_reitti083174071.png");
+}
+.turquoise .small_button.active .left {
+background-position: 0px -260px;
+}
+.turquoise .small_button.active {
+background-position: 0px -288px;
+}
+.turquoise .small_button.active .right {
+background-position: 0px -316px;
+}
+/*
+end small button css
+*/
+
+/*
+override default esri tundra css
+*/
+#map_zoom_slider {
+left: auto !important;
+right: 325px !important;
+top: 110px !important;
+}
+
+/*
+.infowindow .window .top .right .user .titlebar .hide {
+    height: 0px !important;
+    width: 0px !important;
+}*/
+
+/* zoomslider override */
+.tundra .dijitSliderIncrementIconV {
+position: relative;
+left: 2px;
+background-image: url("../images/plus.gif");
+background-position: 0px 0px;
+height: 18px;
+width: 18px;
+}
+.tundra .dijitSliderDecrementIconV {
+position: relative;
+left: 2px;
+background-image: url("../images/minus.gif");
+background-position: 0px 0px;
+height: 18px;
+width: 18px;
+}
+
+/* Navigation tools background */
+#navigation_tools_background {
+position: absolute;
+right: 313px;
+top: 20px;
+background-image: url("../images/navigaatio_tausta.png");
+background-repeat: no-repeat;
+height: 414px;
+width: 84px;
+z-index: 29;
+}
+
+/* satellite map button */
+#satellite_map_button {
+position: absolute;
+right: 323px;
+top: 350px;
+height: 22px;
+width: auto;
+z-index: 30;
+cursor: pointer;
+overflow: visible;
+white-space: nowrap;
+opacity: 0.8;
+}
+#satellite_map_button:hover {
+opacity: 1;
+}
+#satellite_button_activity {
+background-image: url('../images/satellite_button_middle.png');
+background-repeat: repeat-x;
+height: 100%;
+width: 100%;
+}
+#satellite_map_button .left-border {
+display: inline-block;
+position: relative;
+right: 4px;
+width: 7px;
+height: 22px;
+background-image: url('../images/satellite_button_left.png');
+background-repeat: no-repeat;
+}
+#satellite_map_button .text {
+display: inline-block;
+position: relative;
+bottom: 7px;
+color: black;
+font-size: 12px;
+}
+#satellite_map_button .right-border {
+display: inline-block;
+position: relative;
+left: 4px;
+width: 7px;
+height: 22px;
+background-image: url('../images/satellite_button_right.png');
+background-repeat: no-repeat;
+}
+#satellite_map_button .active {
+background-image: url('../images/satellite_button_middle_active.png');
+}
+#satellite_map_button .active .left-border {
+background-image: url('../images/satellite_button_left_active.png');
+}
+#satellite_map_button .active .right-border {
+background-image: url('../images/satellite_button_right_active.png');
+}
+
+
+/*PAN ARROW CSS*/
+div.fixedPanPehmo {
+background-image:url("../images/pan-sprite.png");
+background-repeat: no-repeat;
+cursor:pointer;
+height:20px;
+overflow:hidden;
+position:absolute;
+width:20px;
+}
+
+div#pan_arrows {
+position: absolute;
+margin-left:30px;
+left:-20px;
+top: 10px;
+}
+/* have to reset positions else .map .container .upperLeft etc determines position*/
+div#pan_upperLeft {
+background-position: 0px 0px;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+}
+div#pan_up {
+background-position:-21px 0px;
+left: 21px;
+top: 0;
+right: 0;
+bottom: 0;
+}
+div#pan_upperRight {
+background-position:-42px 0px;
+left: 42px;
+top: 0;
+right: 0;
+bottom: 0;
+}
+
+/*div.fixedPan {
+background-image:url("../images/pan-sprite.png");
+background-repeat: no-repeat;
+cursor:pointer;
+height:20px;
+overflow:hidden;
+position:absolute;
+width:20px;
+}
+
+div#pan_arrows {
+position: absolute;
+margin-left:30px;
+left:-20px;
+top: 10px;
+}
+div#pan_upperLeft {
+background-position: 0px 0px;
+}
+div#pan_up {
+}*/
+div#pan_right {
+background-position:-42px -21px;
+left: 42px;
+top: 21px;
+right: 0;
+bottom: 0;
+}
+div#pan_lowerRight {
+background-position:-42px -42px;
+left: 42px;
+top: 42px;
+right: 0;
+bottom: 0;
+}
+div#pan_down {
+background-position:-21px -42px;
+left: 21px;
+top: 42px;
+right: 0;
+bottom: 0;
+}
+div#pan_lowerLeft {
+background-position: 0px -42px;
+top: 42px;
+right: 0;
+bottom: 0;
+left: 0;
+}
+div#pan_left {
+background-position:0px -21px;
+top: 21px;
+right: 0;
+bottom: 0;
+left: 0;
+}
+/*END PAN ARROW CSS*/
+
+/* Infowindow */
+.infowindow .sprite {
+background-image: url("../images/infowindow.png") !important;
+}
+.infowindow .window {
+font-family: Calibri, Helvetica, sans-serif !important;
+}
+
+form#info_form div.slider_values, form div.slider_values {
+width: 98%;
+white-space: nowrap;
+}
+
+form#info_form div.slider_values .left, form div.slider_values .left {
+position: relative;
+width: 50%;
+display: inline-block;
+text-align: left;
+white-space: normal;
+}
+
+form#info_form div.slider_values .right, form div.slider_values .right {
+position: relative;
+width: 50%;
+display: inline-block;
+text-align: right;
+white-space: normal;
+}
+
+form#info_form div.remove {
+color: red;
+cursor: pointer;
+font-style: italic;
+margin: 2px 14px 0px 7px;
+position: relative;
+right: 3px;
+}
+form#info_form div.remove:hover {
+opacity: 0.7;
+}
+
+/*living environment */
+#general-env-grade {
+margin-bottom: 5px;
+}
+
+/*Links*/
+a, a:visited {
+    color: gray;
+    font-weight: bold;
+    text-decoration: none;
+}
+a:hover {
+    color:black;
+}
+a:active {
+    outline: none;
+}

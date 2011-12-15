@@ -1,0 +1,123 @@
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* header css */
+header {
+    height: 30px;
+    padding-left: 10px;
+    
+}
+header #logo {
+    background-image: url('/static/img/logo.png');
+    background-repeat: no-repeat;
+    width: 82px;
+    height: 22px;
+}
+header #auth {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+header #auth a {
+    border-right: 1px solid black;
+    padding-right: 5px;
+}
+/*
+ toolbar css
+*/
+#toolbar {
+    height: 20px;
+    padding-left: 10px;
+    position: relative;
+    left: 230px;
+    width: 500px;
+}
+#toolbar a {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+#map {
+    position: absolute;
+    bottom: 0px;
+    top: 50px;
+    left: 230px;
+    right: 230px;
+    background-color: #AAEEAA;
+}
+
+.dialog {
+    display: none;
+}
+
+/*
+ Layers css
+*/
+#layers {
+    position: absolute;
+    bottom: 0px;
+    top: 50px;
+    left: 0px;
+    width: 230px;
+}
+
+#layers svg {
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+}
+#layers .layer {
+    height: 50px;
+    border: 1px dotted black;
+    padding: 5px;
+}
+#layers .layer div {
+    display: inline-block;
+}
+#layers .layer a {
+    cursor: pointer;
+}
+#layers .layer .layer_name {
+    width: 140px;
+    text-align: center;
+}
+#layers .layer .layer_type_color {
+    width: 18px;
+    height: 18px;
+}
+
+/* layer form CSS */
+form .add_query {
+    cursor: pointer;
+}
+form .ui-icon {
+    position: relative;
+    top: 3px;
+    width: 16px;
+    display: inline-block;
+    cursor: pointer;
+}
+/*
+form .query_pair {
+    display: none;
+}
+*/
+form .remove_query {
+    cursor: pointer;
+}
+
+
+/*
+ feature properties css
+*/
+#feature_properties {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    top: 50px;
+    width: 230px;
+}
+

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Analyze</title>
+        <link rel="stylesheet" type="text/css" href="Analyze_files/style.css">        
+        <link rel="stylesheet" type="text/css" href="Analyze_files/analyze.css">      
+        <link rel="stylesheet" type="text/css" href="Analyze_files/jquery-ui-1.css">
+        <link rel="stylesheet" type="text/css" href="Analyze_files/colorpicker.css">         
+        
+    </head>
+    <body>
+        <header>
+            <div id="logo"></div>
+            <div id="auth">
+                <a>Settings</a>
+                <a>Sign out</a>
+            </div>
+        </header>
+        <div id="toolbar">
+            <div class="common_layer_functions">
+                <a id="show_all_layers">Show all</a>
+                <a id="hide_all_layers">Hide all</a>
+                <a id="add_layer">Add layer</a>
+                <a href="http://localhost:8000/static/test/test.csv">Download visible layers</a>
+            </div>
+        </div>
+        <div id="map"></div>
+        <div id="layers">
+            
+                <!-- html to for the layer
+takes params
+
+geometry_type: point, polyline, polygon
+color: color of the layer
+name: name for layer
+-->
+
+<div class="layer">
+    <table>
+        <tbody><tr>
+            <td>
+                <input name="visible" value="point layer" type="checkbox">
+            </td>
+            <td>
+                <div class="layer_name">point layer</div>
+            </td>
+            <td>
+                <div class="layer_type_color">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 18 18">
+                        <circle cx="9" cy="9" r="6" fill="#0000FF"></circle>
+                    </svg>
+                    
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    
+    <div class="remove_layer">
+        <a>remove layer</a>
+    </div>
+    <div class="edit_layer">
+        <a>edit layer</a>
+    </div>
+</div>
+            
+            
+                <!-- html to for the layer
+takes params
+
+geometry_type: point, polyline, polygon
+color: color of the layer
+name: name for layer
+-->
+
+<div class="layer">
+    <table>
+        <tbody><tr>
+            <td>
+                <input name="visible" value="polyline layer" type="checkbox">
+            </td>
+            <td>
+                <div class="layer_name">polyline layer</div>
+            </td>
+            <td>
+                <div class="layer_type_color">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 18 18">
+                        <polyline fill="none" points="3,3 12,6 6,12 16,15" stroke="#FF0000" stroke-width="2"></polyline>
+                    </svg>
+                    
+                    
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    
+    <div class="remove_layer">
+        <a>remove layer</a>
+    </div>
+    <div class="edit_layer">
+        <a>edit layer</a>
+    </div>
+</div>
+            
+            
+                <!-- html to for the layer
+takes params
+
+geometry_type: point, polyline, polygon
+color: color of the layer
+name: name for layer
+-->
+
+<div class="layer">
+    <table>
+        <tbody><tr>
+            <td>
+                <input name="visible" value="polygon layer" type="checkbox">
+            </td>
+            <td>
+                <div class="layer_name">polygon layer</div>
+            </td>
+            <td>
+                <div class="layer_type_color">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 18 18">
+                        <polygon fill="#00FF00" points="6,6 14,3 17,13 6,16"></polygon>
+                    </svg>
+                    
+                    
+                    
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    
+    <div class="remove_layer">
+        <a>remove layer</a>
+    </div>
+    <div class="edit_layer">
+        <a>edit layer</a>
+    </div>
+</div>
+            
+        </div>
+        <div id="feature_properties"></div>
+        
+        
+        
+        <!-- dialogs -->
+        
+        
+        
+        
+        <!-- end dialogs -->
+        
+        <script type="text/javascript" src="Analyze_files/jquery-1.js">
+        </script>
+        <script type="text/javascript" src="Analyze_files/jquery-ui-1.js">
+        </script>
+        <script type="text/javascript" src="Analyze_files/colorpicker.js">
+        </script>
+        <script type="text/javascript" src="Analyze_files/analyze.js">
+        </script><div aria-labelledby="ui-dialog-title-add_layer_dialog" role="dialog" tabindex="-1" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable" style="display: block; z-index: 1002; outline: 0px none; position: absolute; height: auto; width: 600px; top: 0px; left: 327px;"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span id="ui-dialog-title-add_layer_dialog" class="ui-dialog-title">Add layer</span><a role="button" class="ui-dialog-titlebar-close ui-corner-all" href="#"><span class="ui-icon ui-icon-closethick">close</span></a></div><div scrollleft="0" scrolltop="31" style="display: block; width: auto; min-height: 0px; height: 484.733px;" id="add_layer_dialog" class="dialog ui-dialog-content ui-widget-content">
+            
+<form name="add_layer">
+    <p>Give a name for the layer:</p>
+    <input value="name of layer" type="text">
+    <div>
+        <p>Select geometry type:</p>
+        <select>
+            <option>point</option>
+            <option selected="selected">polyline</option>
+            <option>polygon</option>
+        </select>
+    </div>
+    <p>
+        You can add properties for the geographical features in this layer.
+    </p>
+    <fieldset class="geography">
+        <div class="row">
+            
+
+    <select name="key" class="query_key">
+        <option class="empty" value="">
+        </option>
+    
+        <option class="string" value="name">
+            name
+        </option>
+    
+        <option class="True" value="positive">
+            positive
+        </option>
+    
+        <option class="number" value="age">
+            age
+        </option>
+    
+        <option class="False" value="negative">
+            negative
+        </option>
+    
+        <option selected="selected" class="null" value="null_value">
+            null_value
+        </option>
+    
+        <option class="object" value="email">
+            email
+        </option>
+    
+    </select>
+    
+
+    <!-- build the pairs for different types -->        
+    <span class="string query_pair">
+        <select name="string_cond">
+            <option selected="selected" value="contains">contains</option>
+            <option value="equals">equals</option>
+        </select>
+    
+        <input type="text">
+    </span>
+    
+    <span class="number query_pair">
+        <select name="number_cond">
+            <option selected="selected" value="=">is</option>
+            <option value="&lt;=">is less than</option>
+            <option value="&gt;=">is more than</option>
+        </select>
+    
+        <input value="0" type="number">
+    </span>
+        
+    <span class="true false null query_pair">
+        <p>is</p>
+        <input value="=" type="hidden">
+            
+        <select name="value">
+            <option selected="selected" value="true">true</option>
+            <option value="false">false</option>
+            <option value="null">null</option>
+        </select>
+    </span>
+
+
+        </div>
+    </fieldset>
+    <div class="add_query geography">
+        <span class="ui-icon ui-icon-circle-plus"></span>
+        <span>Add property</span>
+    </div>
+    
+    <p>
+        You can restrict the features in this layer according to the user
+        profile properties.
+    </p>
+    <fieldset class="profile">
+        <div class="row">
+            
+
+    <select name="key" class="query_key">
+        <option class="empty" value="">
+        </option>
+    
+        <option class="string" value="name">
+            name
+        </option>
+    
+        <option class="True" value="positive">
+            positive
+        </option>
+    
+        <option class="number" value="age">
+            age
+        </option>
+    
+        <option selected="selected" class="False" value="negative">
+            negative
+        </option>
+    
+        <option class="null" value="null_value">
+            null_value
+        </option>
+    
+        <option class="object" value="email">
+            email
+        </option>
+    
+    </select>
+    
+
+    <!-- build the pairs for different types -->        
+    <span class="string query_pair">
+        <select name="string_cond">
+            <option selected="selected" value="contains">contains</option>
+            <option value="equals">equals</option>
+        </select>
+    
+        <input type="text">
+    </span>
+    
+    <span class="number query_pair">
+        <select name="number_cond">
+            <option selected="selected" value="=">is</option>
+            <option value="&lt;=">is less than</option>
+            <option value="&gt;=">is more than</option>
+        </select>
+    
+        <input value="0" type="number">
+    </span>
+        
+    <span class="true false null query_pair">
+        <p>is</p>
+        <input value="=" type="hidden">
+            
+        <select name="value">
+            <option selected="selected" value="true">true</option>
+            <option value="false">false</option>
+            <option value="null">null</option>
+        </select>
+    </span>
+
+
+        </div>
+    </fieldset>
+    <div class="add_query profile">
+        <span class="ui-icon ui-icon-circle-plus"></span>
+        <span>Add property</span>
+    </div>
+        
+</form>
+        </div><div class="ui-resizable-handle ui-resizable-n"></div><div class="ui-resizable-handle ui-resizable-e"></div><div class="ui-resizable-handle ui-resizable-s"></div><div class="ui-resizable-handle ui-resizable-w"></div><div style="z-index: 1001;" class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se"></div><div style="z-index: 1002;" class="ui-resizable-handle ui-resizable-sw"></div><div style="z-index: 1003;" class="ui-resizable-handle ui-resizable-ne"></div><div style="z-index: 1004;" class="ui-resizable-handle ui-resizable-nw"></div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button"><span class="ui-button-text">Add layer</span></button><button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button"><span class="ui-button-text">Cancel</span></button></div></div></div><div aria-labelledby="ui-dialog-title-remove_layer_dialog" role="dialog" tabindex="-1" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable" style="display: none; z-index: 1000; outline: 0px none; position: absolute;"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span id="ui-dialog-title-remove_layer_dialog" class="ui-dialog-title">Remove layer</span><a role="button" class="ui-dialog-titlebar-close ui-corner-all" href="#"><span class="ui-icon ui-icon-closethick">close</span></a></div><div style="display: block;" id="remove_layer_dialog" class="dialog ui-dialog-content ui-widget-content">
+            <p>Are you sure you want to remove the layer?</p>
+        </div><div class="ui-resizable-handle ui-resizable-n"></div><div class="ui-resizable-handle ui-resizable-e"></div><div class="ui-resizable-handle ui-resizable-s"></div><div class="ui-resizable-handle ui-resizable-w"></div><div style="z-index: 1001;" class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se"></div><div style="z-index: 1002;" class="ui-resizable-handle ui-resizable-sw"></div><div style="z-index: 1003;" class="ui-resizable-handle ui-resizable-ne"></div><div style="z-index: 1004;" class="ui-resizable-handle ui-resizable-nw"></div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button"><span class="ui-button-text">Remove layer</span></button><button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button"><span class="ui-button-text">Cancel</span></button></div></div></div><div aria-labelledby="ui-dialog-title-edit_layer_dialog" role="dialog" tabindex="-1" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable" style="display: none; z-index: 1000; outline: 0px none; position: absolute;"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span id="ui-dialog-title-edit_layer_dialog" class="ui-dialog-title">Edit layer</span><a role="button" class="ui-dialog-titlebar-close ui-corner-all" href="#"><span class="ui-icon ui-icon-closethick">close</span></a></div><div style="display: block;" id="edit_layer_dialog" class="dialog ui-dialog-content ui-widget-content">
+            
+<form name="add_layer">
+    <p>Give a name for the layer:</p>
+    <input value="name of layer" type="text">
+    <div>
+        <p>Select geometry type:</p>
+        <select>
+            <option selected="selected">point</option>
+            <option>polyline</option>
+            <option>polygon</option>
+        </select>
+    </div>
+    <p>
+        You can add properties for the geographical features in this layer.
+    </p>
+    <fieldset class="geography">
+        <div class="row">
+            
+
+    <select name="key" class="query_key">
+        <option class="empty" value="" selected="selected">
+        </option>
+    
+        <option class="string" value="name">
+            name
+        </option>
+    
+        <option class="True" value="positive">
+            positive
+        </option>
+    
+        <option class="number" value="age">
+            age
+        </option>
+    
+        <option class="False" value="negative">
+            negative
+        </option>
+    
+        <option class="null" value="null_value">
+            null_value
+        </option>
+    
+        <option class="object" value="email">
+            email
+        </option>
+    
+    </select>
+    
+
+    <!-- build the pairs for different types -->        
+    <span class="string query_pair">
+        <select name="string_cond">
+            <option selected="selected" value="contains">contains</option>
+            <option value="equals">equals</option>
+        </select>
+    
+        <input type="text">
+    </span>
+    
+    <span class="number query_pair">
+        <select name="number_cond">
+            <option selected="selected" value="=">is</option>
+            <option value="&lt;=">is less than</option>
+            <option value="&gt;=">is more than</option>
+        </select>
+    
+        <input value="0" type="number">
+    </span>
+        
+    <span class="true false null query_pair">
+        <p>is</p>
+        <input value="=" type="hidden">
+            
+        <select name="value">
+            <option selected="selected" value="true">true</option>
+            <option value="false">false</option>
+            <option value="null">null</option>
+        </select>
+    </span>
+
+
+        </div>
+    </fieldset>
+    <div class="add_query geography">
+        <span class="ui-icon ui-icon-circle-plus"></span>
+        <span>Add property</span>
+    </div>
+    
+    <p>
+        You can restrict the features in this layer according to the user
+        profile properties.
+    </p>
+    <fieldset class="profile">
+        <div class="row">
+            
+
+    <select name="key" class="query_key">
+        <option class="empty" value="" selected="selected">
+        </option>
+    
+        <option class="string" value="name">
+            name
+        </option>
+    
+        <option class="True" value="positive">
+            positive
+        </option>
+    
+        <option class="number" value="age">
+            age
+        </option>
+    
+        <option class="False" value="negative">
+            negative
+        </option>
+    
+        <option class="null" value="null_value">
+            null_value
+        </option>
+    
+        <option class="object" value="email">
+            email
+        </option>
+    
+    </select>
+    
+
+    <!-- build the pairs for different types -->        
+    <span class="string query_pair">
+        <select name="string_cond">
+            <option selected="selected" value="contains">contains</option>
+            <option value="equals">equals</option>
+        </select>
+    
+        <input type="text">
+    </span>
+    
+    <span class="number query_pair">
+        <select name="number_cond">
+            <option selected="selected" value="=">is</option>
+            <option value="&lt;=">is less than</option>
+            <option value="&gt;=">is more than</option>
+        </select>
+    
+        <input value="0" type="number">
+    </span>
+        
+    <span class="true false null query_pair">
+        <p>is</p>
+        <input value="=" type="hidden">
+            
+        <select name="value">
+            <option selected="selected" value="true">true</option>
+            <option value="false">false</option>
+            <option value="null">null</option>
+        </select>
+    </span>
+
+
+        </div>
+    </fieldset>
+    <div class="add_query profile">
+        <span class="ui-icon ui-icon-circle-plus"></span>
+        <span>Add property</span>
+    </div>
+        
+</form>
+        </div><div class="ui-resizable-handle ui-resizable-n"></div><div class="ui-resizable-handle ui-resizable-e"></div><div class="ui-resizable-handle ui-resizable-s"></div><div class="ui-resizable-handle ui-resizable-w"></div><div style="z-index: 1001;" class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se"></div><div style="z-index: 1002;" class="ui-resizable-handle ui-resizable-sw"></div><div style="z-index: 1003;" class="ui-resizable-handle ui-resizable-ne"></div><div style="z-index: 1004;" class="ui-resizable-handle ui-resizable-nw"></div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button"><span class="ui-button-text">Update layer</span></button><button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button"><span class="ui-button-text">Cancel</span></button></div></div></div><div id="collorpicker_111" class="colorpicker"><div style="background-color: rgb(255, 0, 0);" class="colorpicker_color"><div><div style="left: 150px; top: 0px;"></div></div></div><div class="colorpicker_hue"><div style="top: 150px;"></div></div><div style="background-color: rgb(255, 0, 0);" class="colorpicker_new_color"></div><div style="background-color: rgb(255, 0, 0);" class="colorpicker_current_color"></div><div class="colorpicker_hex"><input value="ff0000" maxlength="6" size="6" type="text"></div><div class="colorpicker_rgb_r colorpicker_field"><input value="255" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_rgb_g colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_rgb_b colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_h colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_s colorpicker_field"><input value="100" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_b colorpicker_field"><input value="100" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_submit"></div></div><div id="collorpicker_906" class="colorpicker"><div style="background-color: rgb(255, 0, 0);" class="colorpicker_color"><div><div style="left: 150px; top: 0px;"></div></div></div><div class="colorpicker_hue"><div style="top: 150px;"></div></div><div style="background-color: rgb(255, 0, 0);" class="colorpicker_new_color"></div><div style="background-color: rgb(255, 0, 0);" class="colorpicker_current_color"></div><div class="colorpicker_hex"><input value="ff0000" maxlength="6" size="6" type="text"></div><div class="colorpicker_rgb_r colorpicker_field"><input value="255" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_rgb_g colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_rgb_b colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_h colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_s colorpicker_field"><input value="100" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_b colorpicker_field"><input value="100" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_submit"></div></div><div id="collorpicker_813" class="colorpicker"><div style="background-color: rgb(255, 0, 0);" class="colorpicker_color"><div><div style="left: 150px; top: 0px;"></div></div></div><div class="colorpicker_hue"><div style="top: 150px;"></div></div><div style="background-color: rgb(255, 0, 0);" class="colorpicker_new_color"></div><div style="background-color: rgb(255, 0, 0);" class="colorpicker_current_color"></div><div class="colorpicker_hex"><input value="ff0000" maxlength="6" size="6" type="text"></div><div class="colorpicker_rgb_r colorpicker_field"><input value="255" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_rgb_g colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_rgb_b colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_h colorpicker_field"><input value="0" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_s colorpicker_field"><input value="100" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_hsb_b colorpicker_field"><input value="100" maxlength="3" size="3" type="text"><span></span></div><div class="colorpicker_submit"></div></div>
+    
+<div style="width: 1261px; height: 349px; z-index: 1001;" class="ui-widget-overlay"></div></body></html>

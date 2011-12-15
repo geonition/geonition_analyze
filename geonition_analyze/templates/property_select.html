@@ -1,0 +1,42 @@
+
+{% if key_types_dict %}
+    <select name="query_key" class="query_key">
+        <option class="empty" value="" selected="selected">
+        </option>
+        <option class="{{ type }}" value="{{ key }}">
+            {{ key }}
+        </option>
+    </select>
+    
+
+    <!-- build the pairs for different types -->        
+    <span class="string query_pair">
+        <select name="query_condition">
+            <option value="contains">contains</option>
+            <option value="equals">equals</option>
+        </select>
+    
+        <input type="text" name="query_value" />
+    </span>
+    
+    <span class="number query_pair">
+        <select name="query_condition">
+            <option value="=">is</option>
+            <option value="<=">is less than</option>
+            <option value=">=">is more than</option>
+        </select>
+    
+        <input type="number" name="query_value" />
+    </span>
+        
+    <span class="true false null query_pair">
+        <span>is</span>
+        <input name="query_condition" type="hidden" value="=" />
+            
+        <select name="query_value">
+            <option value="true">true</option>
+            <option value="false">false</option>
+            <option value="null">null</option>
+        </select>
+    </span>
+{% endif %}

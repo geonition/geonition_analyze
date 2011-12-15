@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Geonition API test</title>
+        <script type="text/javascript" src="test_files/jquery.js"></script>      
+        <script type="text/javascript" src="test_files/geonition.js"></script>        
+    </head>
+    <body>
+        <p>
+            This page loaded the softgis dojo javascript api,
+            you can test it further in a javascript console.
+        </p>
+        <div style="display:none"><input name="csrfmiddlewaretoken" value="245db50a42d75be3d2feaa08d3617ed9" type="hidden"></div>
+        
+        <script type="text/javascript">
+        
+        $(document).ready(
+            function() {
+                //session creation
+                gnt.auth.create_session(console.log);
+                get_session(console.log);
+                delete_session(console.log);
+                create_session(console.log);
+                gnt.auth.get_session(console.log);
+                create_session(console.log);
+                delete_session(console.log);
+        
+                //geo application
+                gnt.geo.get_features("", console.log);
+                gnt.geo.create_feature({"type": "Feature",
+                                        "geometry": { "type": "Point",
+                                                    "coordinates": [100.0, 0.0] },
+                                        "properties": {}},
+                                        console.log);
+        
+                gnt.geo.update_feature({"type": "Feature",
+                                        "geometry": { "type": "Point",
+                                                    "coordinates": [100.0, 0.0] },
+                                        "properties": {"some": 3}},
+                                        console.log);
+                                        
+                //check many session creations and logout after each other
+                for(var i = 0; i < 20; i++) {
+                    gnt.auth.create_session(console.log);
+                    gnt.auth.logout(console.log);
+                }
+            }
+        );
+        
+        
+        </script>
+    
+
+</body></html>
