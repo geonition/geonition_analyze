@@ -6,6 +6,6 @@ from django.views.generic import TemplateView
 
 urlpatterns = patterns('geonition_analyze.views',
                        url(r'^$',
-                           TemplateView.as_view(template_name='index.html')),
+                           proto),
             
         )

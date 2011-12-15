@@ -1,138 +1,74 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Analyze</title>
+        
         <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />        
         <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/analyze.css" />      
-        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.8.16.custom.css" />      
-        
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.8.16.custom.css" />
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/colorpicker.css" />
     </head>
     <body>
-        <div id="header">
-            <a>Sign out</a>
-        </div>
+        <header>
+            <div id="logo"></div>
+            <div id="auth">
+                <a>Settings</a>
+                <a>Sign out</a>
+            </div>
+        </header>
         <div id="toolbar">
             <div class="common_layer_functions">
-                <a id="add_layer">add layer</a>
-                <a>show all</a>
-                <a>hide all</a>
-                <a>download visible layers</a>
+                <a id="show_all_layers">Show all</a>
+                <a id="hide_all_layers">Hide all</a>
+                <a id="add_layer">Add layer</a>
+                <a href="{{ STATIC_URL }}test/test.csv">Download visible layers</a>
+                <input type="checkbox" id="help" checked="" />
+                <label for="help">Show help</label>
             </div>
         </div>
         <div id="map"></div>
         <div id="layers">
-            <div class="layer">
-                <input type="checkbox" name="visible" value="layer_name" />
-                <div class="layer_name">point layer</div>
-                <div class="layer_type_color">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 18 18">
-                        <circle cx="9" cy="9" r="6" fill="#AA0000" />
-                    </svg>
-                </div>
-                <div class="remove_layer">
-                    <a>remove layer</a>
-                </div>
-                <div class="edit_layer">
-                    <a>edit layer</a>
-                </div>
+            <h3>Layers created:</h3>
+            {% with geometry_type='point' color='#0000FF' name='point layer' %}
+                {% include 'layer.html' %}
+            {% endwith %}
+            {% with geometry_type='polyline' color='#FF0000' name='polyline layer'%}
+                {% include 'layer.html' %}
+            {% endwith %}
+            {% with geometry_type='polygon' color='#00FF00' name='polygon layer' %}
+                {% include 'layer.html' %}
+            {% endwith %}
+        </div>
+        <div id="feature_properties">
+            <h3>Comments in visible features:</h3>
+            <p class="help">You can click a comment to highlight it on the map</p>
+            <div class="properties selected">
+                <h5>User testuser say</h5>
+                <p>I have a good feeling about his place just cannot explain it
+                but very good.</p>
             </div>
-            <div class="layer">
-                <input type="checkbox" name="visible" value="layer_name" />
-                <div class="layer_name">polyline layer</div>
-                <div class="layer_type_color">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 18 18">
-                        <polyline fill="none" points="3,3 12,6 6,12 16,15" stroke="#00AA00" stroke-width="2"/>
-                    </svg>
-                </div>
-                <div class="remove_layer">
-                    <a>remove layer</a>
-                </div>
-                <div class="edit_layer">
-                    <a>edit layer</a>
-                </div>
-            </div>
-            <div class="layer">
-                <input type="checkbox" name="visible" value="layer_name" />
-                <div class="layer_name">polygon layer</div>
-                <div class="layer_type_color">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 18 18">
-                        <polygon fill="#0000AA" points="6,6 14,3 17,13 6,16" />
-                    </svg>
-                </div>
-                <div class="remove_layer">
-                    <a>remove layer</a>
-                </div>
-                <div class="edit_layer">
-                    <a>edit layer</a>
-                </div>
+            <div class="properties">
+                <h5>User osama say</h5>
+                <p>Nice place to hang around.</p>
             </div>
         </div>
-        <div id="feature_properties"></div>
         
         
         
         <!-- dialogs -->
         <div id="add_layer_dialog" class="dialog">
-            <form>
-                <p>Give a name to the layer:</p>
-                <input type="text" value="name of layer" />
-                <div>
-                    <p>Select geometry type:</p>
-                    <select>
-                        <option>point</option>
-                        <option>polyline</option>
-                        <option>polygon</option>
-                    </select>
-                </div>
-                <fieldset class="geography">
-                    <p>Select properties for the geometries.
-                    Leaving the selection as @all means all features
-                    regardless of properties will be returned.
-                    </p>
-                    <select>
-                        <option>@all</option>
-                        <option>social place</option>
-                        <option>beautiful place</option>
-                    </select>
-                    <select>
-                        <option>is</option>
-                    </select>
-                    <select>
-                        <option>true</option>
-                        <option>false</option>
-                    </select>
-                    <div class="add_query">
-                        Add property
-                        <span class="ui-icon ui-icon-circle-plus"></span>
-                    </div>
-                </fieldset>
-                
-                <p>Select properties for the users.
-                Leaving the selection as @all means all features
-                regardless of user properties will be returned.
-                </p>
-                <fieldset class="profile">
-                    <select>
-                        <option>@all</option>
-                        <option>age</option>
-                        <option>familytype</option>
-                    </select>
-                    <select>
-                        <option>is</option>
-                        <option>less then</option>
-                        <option>more then</option>
-                    </select>
-                    <select>
-                        <option>true</option>
-                        <option>1</option>
-                        <option>2</option>
-                    </select>
-                </fieldset>
-                <div class="add_query">
-                    Add property
-                    <span class="ui-icon ui-icon-circle-plus"></span>
-                </div>
-                    
-            </form>
+            {% with form_name='add_layer' %}
+                {% include 'layer_form.html' %}
+            {% endwith %}
+        </div>
+        <div id="edit_layer_dialog" class="dialog">
+            {% with form_name='edit_layer' %}
+                {% include 'layer_form.html' %}
+            {% endwith %}
+        </div>
+        
+        <div id="remove_layer_dialog" class="dialog">
+            <p>Are you sure you want to remove the layer?</p>
         </div>
         <!-- end dialogs -->
         
@@ -140,23 +76,15 @@
         </script>
         <script type="text/javascript" src="{{ STATIC_URL }}js/libs/jquery-ui-1.8.16.custom.min.js">
         </script>
-        <script type="text/javascript">
-        $('#add_layer_dialog').dialog({
-            autoOpen: false,
-            modal: true,
-            title: 'Add layer',
-            buttons: {
-                'Add layer': function(event) {console.log('add layer');},
-                'Cancel': function(event) {console.log('Cancel');}
-            },
-            maxHeight: 900
-        });
-        $('#add_layer').click(function() {
-            $('#add_layer_dialog').dialog('open');
-        });
-        function add_property(node) {
-            $("fieldset.profile").
-        }
+        <script type="text/javascript" src="{{ STATIC_URL }}OpenLayers-2.11/OpenLayers.js">
+        </script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/colorpicker.js">
+        </script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/analyze.js">
+        </script>
+        <script type="text/javascript" src="{% url api_javascript %}">
+        </script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/openlayers_analyze.js">
         </script>
     </body>
 </html>

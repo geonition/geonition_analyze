@@ -6,18 +6,37 @@ color: color of the layer
 name: name for layer
 -->
 
-<div class="layer">
-    <input type="checkbox" name="visible" value="layer_name" />
-    <div class="layer_name">point layer</div>
-    <div class="layer_type_color">
-        {% if geometry_type = 'point' %}
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 18 18">
-            <circle cx="9" cy="9" r="6" fill="{{ color }}" />
-        </svg>
-        {% else %}{% if geometry_type = 'polyline' %}
-        {% else %}{% if geometry_type = 'polygon' %}
-        {% endif %}
-    </div>
+<div class="layer hidden {{ geometry_type }}">
+    <table>
+        <tr>
+            <td>
+                <input type="checkbox" name="visible" checked="checked" value="{{ name }}" />
+            </td>
+            <td>
+                <div class="layer_name">{{ name }}</div>
+            </td>
+            <td>
+                <div class="layer_type_color">
+                    {% if geometry_type = 'point' %}
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 18 18">
+                        <circle cx="9" cy="9" r="6" fill="{{ color }}" />
+                    </svg>
+                    {% else %}{% if geometry_type = 'polyline' %}
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 18 18">
+                        <polyline fill="none" points="3,3 12,6 6,12 16,15" stroke="{{ color }}" stroke-width="2"/>
+                    </svg>
+                    {% else %}{% if geometry_type = 'polygon' %}
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 18 18">
+                        <polygon fill="{{ color }}" points="6,6 14,3 17,13 6,16" />
+                    </svg>
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </td>
+        </tr>
+    </table>
+    
     <div class="remove_layer">
         <a>remove layer</a>
     </div>
